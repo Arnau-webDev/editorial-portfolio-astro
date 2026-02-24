@@ -1,0 +1,487 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Reveal from '../../components/case-study/Reveal.astro';
+import StatCard from '../../components/case-study/StatCard.astro';
+import MetricCard from '../../components/case-study/MetricCard.astro';
+import SectionHeading from '../../components/case-study/SectionHeading.astro';
+import SubHeading from '../../components/case-study/SubHeading.astro';
+import ArchitectureDiagram from '../../components/diagrams/ArchitectureDiagram.astro';
+---
+
+<BaseLayout
+  title="Lufthansa Group — Flight Upgrade Flow | Arnau Marquilles"
+  description="How we replaced a legacy system with a cross-platform, multi-tenant micro-frontend serving millions of passengers across 6 airline brands."
+>
+  <Header variant="case-study" />
+  <main class="pt-16">
+
+    <!-- HERO -->
+    <section class="py-10 px-8 md:px-12 lg:px-20 xl:px-32 2xl:px-40">
+      <div class="max-w-[2500px] mx-auto">
+        <Reveal>
+          <p class="text-primary text-base tracking-widest uppercase mb-6">Case Study</p>
+          <h1 class="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-6 max-w-[900px] leading-tight">
+            Rebuilding the Flight Upgrade Experience
+          </h1>
+          <p class="text-text-body text-lg max-w-[600px] leading-relaxed mb-12">
+            How we replaced a legacy system with a cross-platform,
+            multi-tenant micro-frontend — serving millions of passengers
+            across 6 airline brands, web, and mobile.
+          </p>
+        </Reveal>
+
+        <!-- Metadata strip -->
+        <Reveal delay={0.15}>
+          <div class="flex flex-wrap gap-x-10 gap-y-4 mb-12 pb-12 border-b border-border">
+            {[
+              { label: 'Company', value: 'Lufthansa Group' },
+              { label: 'Role', value: 'Tech Lead · Team of 10' },
+              { label: 'Timeline', value: '2+ years (ongoing)' },
+              { label: 'Brands', value: 'Lufthansa · Swiss · Austrian · Brussels · Eurowings Discover · ITA Airways' },
+              { label: 'Stack', value: 'Next.js · React · TypeScript · Vite' },
+            ].map((item) => (
+              <div>
+                <p class="text-text-muted text-sm tracking-widest uppercase mb-1">{item.label}</p>
+                <p class="text-foreground text-base">{item.value}</p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
+        <!-- Key stats -->
+        <Reveal delay={0.3}>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <StatCard value="50%" label="Faster performance" />
+            <StatCard value="4.2%" label="Increased Conversion" />
+            <StatCard value="6" label="Airline brands" />
+            <StatCard value="800.000 +" label="Monthly users" />
+          </div>
+        </Reveal>
+      </div>
+    </section>
+
+    <!-- CHALLENGE · ROLE · APPROACH -->
+    <section class="py-10 md:py-20 px-8 md:px-12 lg:px-20 xl:px-32 2xl:px-40">
+      <div class="max-w-[2500px] mx-auto">
+        <div class="space-y-20 md:space-y-0 md:grid md:grid-cols-2 md:gap-12 md:items-start 3xl:grid-cols-3">
+
+          <!-- Column 1: The Challenge -->
+          <div class="max-w-[600px] md:max-w-none">
+            <Reveal><SectionHeading number="01" title="The Challenge" /></Reveal>
+            <Reveal><SubHeading title="Legacy at Scale" /></Reveal>
+            <Reveal delay={0.1}>
+              <blockquote class="border-l-2 border-accent/40 pl-6 mb-8">
+                <p class="text-text-body text-base md:text-lg leading-relaxed italic">
+                  Lufthansa Group's flight upgrade system was built on a
+                  legacy stack that had accumulated years of technical debt.
+                  It was slow, hard to extend, and couldn't keep pace with
+                  the demand for new features — let alone scale across six
+                  airline brands and three platforms.
+                </p>
+              </blockquote>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <ul class="space-y-4">
+                {[
+                  { title: 'Legacy architecture', desc: 'Monolithic, tightly coupled, slow to deploy' },
+                  { title: 'Multi-tenant complexity', desc: 'The upgrade flow had to serve LH, LX, OS, SN, 4Y, and the recently added ITA, each with its own brand identity, design language, and business rules' },
+                  { title: 'Cross-platform gap', desc: 'Web and mobile apps had divergent codebases, leading to inconsistent UX and duplicated effort' },
+                  { title: 'Slow time-to-market', desc: 'Shipping a feature or experiment across all brands and platforms was costly and error-prone' },
+                ].map((point) => (
+                  <li class="flex gap-3">
+                    <span class="text-accent mt-1.5 shrink-0">&mdash;</span>
+                    <div>
+                      <span class="text-foreground font-medium">{point.title}</span>
+                      <span class="text-text-body"> — {point.desc}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+
+          <!-- Column 2: My Role & Scope -->
+          <div class="max-w-[600px] md:max-w-none">
+            <Reveal><SectionHeading number="02" title="My Role & Scope" /></Reveal>
+            <Reveal><SubHeading title="End-to-End Ownership" /></Reveal>
+            <Reveal delay={0.1}>
+              <blockquote class="border-l-2 border-accent/40 pl-6 mb-8">
+                <p class="text-text-body text-base md:text-lg leading-relaxed italic">
+                  As Tech Lead, I led a cross-functional team of 10 — engineers, designers, product, QA, and business analysts —
+                  through the end-to-end replacement of the upgrade system,
+                  from architecture definition to delivery across web and
+                  mobile for all six airline tenants.
+                </p>
+              </blockquote>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <ul class="space-y-4">
+                {[
+                  'Drove architecture decisions and technical strategy, choosing MFE + WebView over monolithic and native alternatives',
+                  'Mentored engineers on React performance patterns, testing practices, and multi-tenant design principles',
+                  'Aligned with native iOS and Android teams on WebView integration contracts, bridge APIs, and release cadences',
+                  'Shielded the team from large scope changes during a fast-moving stakeholder environment',
+                  'Coordinated with product, design, backend, and brand stakeholders across the different airlines of the group',
+                  'Owned and enforced technical standards: performance budgets, accessibility compliance, proper data tracking, and CI/CD quality gates',
+                  '24+ months of continuous delivery: from greenfield build through production rollout and ongoing evolution',
+                ].map((item) => (
+                  <li class="flex gap-3">
+                    <span class="text-accent mt-1.5 shrink-0">&mdash;</span>
+                    <span class="text-text-body leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+
+          <!-- Column 3: The Approach -->
+          <div class="max-w-[600px] md:max-w-none md:col-span-2 md:mx-auto md:max-w-[750px] 3xl:col-span-1 3xl:mx-0 3xl:max-w-none">
+            <Reveal><SectionHeading number="03" title="The Approach" /></Reveal>
+            <Reveal><SubHeading title="Multi-Tenant Architecture" /></Reveal>
+            <Reveal delay={0.1}>
+              <blockquote class="border-l-2 border-accent/40 pl-6 mb-8">
+                <p class="text-text-body text-base md:text-lg leading-relaxed italic">
+                  We chose a micro-frontend architecture over a monolithic
+                  rebuild for three reasons: independent deployability, team autonomy,
+                  and isolation from host app risk. For mobile, we chose
+                  WebView over React Native — a single codebase for web +
+                  mobile meant faster iteration cycles.
+                </p>
+              </blockquote>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <p class="text-text-muted text-sm italic mb-8">
+                Tradeoffs accepted: WebView required aggressive performance
+                optimization to reach a near-native feel; MFE added
+                integration complexity with Module Federation and
+                cross-app event contracts.
+              </p>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <ul class="space-y-4">
+                {[
+                  { title: 'Theming engine', desc: 'A robust design system that maps brand tokens (colors, typography, spacing, imagery) to each tenant' },
+                  { title: 'Storybook', desc: 'Component library documentation ensuring consistency and enabling designers to preview components across brand contexts' },
+                  { title: 'Tenant configuration', desc: 'Brand-specific rules and feature flags separated from the UI layer' },
+                  { title: 'Brands served', desc: 'Lufthansa (LH), Swiss (LX), Austrian (OS), Brussels Airlines (SN), Eurowings Discover (4Y), ITA Airways' },
+                ].map((point) => (
+                  <li class="flex gap-3">
+                    <span class="text-accent mt-1.5 shrink-0">&mdash;</span>
+                    <div>
+                      <span class="text-foreground font-medium">{point.title}</span>
+                      <span class="text-text-body"> — {point.desc}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HERO IMAGE -->
+    <section class="py-10 md:py-16 px-8 md:px-12 lg:px-20 xl:px-32 2xl:px-40">
+      <div class="max-w-[2500px] mx-auto">
+        <Reveal>
+          <div class="relative rounded-sm overflow-hidden">
+            <img
+              src="/images/lufthansa-hero.jpg"
+              alt="Lufthansa Boeing 787 in flight above the clouds"
+              class="w-full object-cover"
+              style="aspect-ratio: 21/9;"
+            />
+            <div
+              class="absolute inset-x-0 bottom-0 h-1/3 pointer-events-none"
+              style="background: linear-gradient(to top, hsl(240 6% 3.9%) 0%, transparent 100%);"
+              aria-hidden="true"
+            ></div>
+          </div>
+          <p class="text-text-muted text-base italic mt-4">
+            Serving millions of passengers across Lufthansa Group's six airline brands
+          </p>
+        </Reveal>
+      </div>
+    </section>
+
+    <!-- MFE + WEBVIEW -->
+    <section class="py-10 md:py-20 px-8 md:px-12 lg:px-20 xl:px-32 2xl:px-40">
+      <div class="max-w-[2500px] mx-auto">
+        <div class="space-y-20 md:space-y-0 md:grid md:grid-cols-2 md:gap-12 md:items-start">
+          <!-- Micro-Frontend for Web -->
+          <div class="max-w-[600px] md:max-w-none">
+            <Reveal><SubHeading title="Micro-Frontend for Web" /></Reveal>
+            <Reveal delay={0.1}>
+              <blockquote class="border-l-2 border-accent/40 pl-6 mb-8">
+                <p class="text-text-body text-base md:text-lg leading-relaxed italic">
+                  We built the upgrade flow as a self-contained
+                  micro-frontend, designed to be integrated at multiple
+                  entry points across Lufthansa Group's digital ecosystem.
+                </p>
+              </blockquote>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <ul class="space-y-4">
+                {[
+                  { title: 'Why MFE over alternatives', desc: 'Evaluated shared npm packages, iframes, and a monorepo. Module Federation gave us runtime integration with full build independence' },
+                  { title: 'Standalone MFE', desc: 'Fully encapsulated with its own build pipeline' },
+                  { title: 'Multiple integration points', desc: 'Injected into different pages and contexts across the group\'s websites' },
+                  { title: 'Scalability & isolation', desc: 'Deployable independently without risk to host applications' },
+                  { title: 'Stack', desc: 'Next.js + React + TypeScript + Vite' },
+                ].map((point) => (
+                  <li class="flex gap-3">
+                    <span class="text-accent mt-1.5 shrink-0">&mdash;</span>
+                    <div>
+                      <span class="text-foreground font-medium">{point.title}</span>
+                      <span class="text-text-body"> — {point.desc}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+
+          <!-- Cross-Platform via WebView -->
+          <div class="max-w-[600px] md:max-w-none">
+            <Reveal><SubHeading title="Cross-Platform via WebView" /></Reveal>
+            <Reveal delay={0.1}>
+              <blockquote class="border-l-2 border-accent/40 pl-6 mb-8">
+                <p class="text-text-body text-base md:text-lg leading-relaxed italic">
+                  To avoid maintaining separate codebases for iOS and
+                  Android, we adopted a WebView approach. The native app
+                  shells handled platform concerns, while our React codebase
+                  powered the upgrade experience.
+                </p>
+              </blockquote>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <ul class="space-y-4">
+                {[
+                  { title: 'Why WebView over React Native / Flutter', desc: 'A single web codebase meant zero duplication between web and mobile, faster iteration cycles' },
+                  { title: 'Single codebase', desc: 'Across web and mobile' },
+                  { title: 'Native shells', desc: 'On iOS and Android for navigation, authentication, and platform APIs' },
+                  { title: 'Near-native performance', desc: 'WebView required aggressive optimization — asset preloading, minimal bridge calls, and layout tuning' },
+                  { title: 'Consistent UX', desc: 'Passengers get the same polished experience regardless of platform' },
+                ].map((point) => (
+                  <li class="flex gap-3">
+                    <span class="text-accent mt-1.5 shrink-0">&mdash;</span>
+                    <div>
+                      <span class="text-foreground font-medium">{point.title}</span>
+                      <span class="text-text-body"> — {point.desc}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE DIAGRAM -->
+    <section class="py-10 md:py-16 px-8 md:px-12 lg:px-20 xl:px-32 2xl:px-40">
+      <div class="max-w-[2500px] mx-auto">
+        <Reveal>
+          <ArchitectureDiagram />
+        </Reveal>
+      </div>
+    </section>
+
+    <!-- PERF + DATA-DRIVEN -->
+    <section class="py-10 md:py-20 px-8 md:px-12 lg:px-20 xl:px-32 2xl:px-40">
+      <div class="max-w-[2500px] mx-auto">
+        <div class="space-y-20 md:space-y-0 md:grid md:grid-cols-2 md:gap-12 md:items-start">
+          <!-- Performance Optimization -->
+          <div class="max-w-[600px] md:max-w-none">
+            <Reveal><SubHeading title="Performance Optimization" /></Reveal>
+            <Reveal delay={0.1}>
+              <blockquote class="border-l-2 border-accent/40 pl-6 mb-8">
+                <p class="text-text-body text-base md:text-lg leading-relaxed italic">
+                  We achieved a 50% increase in loading speeds and runtime
+                  performance through a combination of strategies.
+                </p>
+              </blockquote>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <ul class="space-y-4">
+                {[
+                  { title: 'Code-splitting', desc: 'Lazy-loading routes and heavy components to minimize initial bundle' },
+                  { title: 'Caching strategies', desc: 'Service workers, CDN optimization, in-memory memoization' },
+                  { title: 'Asset optimization', desc: 'Image compression, font subsetting, aggressive tree-shaking' },
+                  { title: 'Skeleton loaders & real-time feedback', desc: 'Perceived performance improvements that kept users engaged during data fetches' },
+                ].map((point) => (
+                  <li class="flex gap-3">
+                    <span class="text-accent mt-1.5 shrink-0">&mdash;</span>
+                    <div>
+                      <span class="text-foreground font-medium">{point.title}</span>
+                      <span class="text-text-body"> — {point.desc}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+
+          <!-- Data-Driven Engineering -->
+          <div class="max-w-[600px] md:max-w-none">
+            <Reveal><SubHeading title="Data-Driven Engineering" /></Reveal>
+            <Reveal delay={0.1}>
+              <blockquote class="border-l-2 border-accent/40 pl-6 mb-8">
+                <p class="text-text-body text-base md:text-lg leading-relaxed italic">
+                  We didn't just ship features — we measured everything and
+                  iterated based on real data.
+                </p>
+              </blockquote>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <ul class="space-y-4">
+                {[
+                  { title: 'A/B testing framework', desc: 'Integrated experiment infrastructure to test UI variants across brands' },
+                  { title: 'GA4 integration', desc: 'Comprehensive event tracking for every meaningful user interaction' },
+                  { title: 'Elastic + Kibana', desc: 'Real-time monitoring, error tracking, and performance dashboards' },
+                  { title: 'Conversion funnel analysis', desc: 'Data-informed iteration on UI patterns, copy, and flow to continuously optimize the upgrade experience' },
+                ].map((point) => (
+                  <li class="flex gap-3">
+                    <span class="text-accent mt-1.5 shrink-0">&mdash;</span>
+                    <div>
+                      <span class="text-foreground font-medium">{point.title}</span>
+                      <span class="text-text-body"> — {point.desc}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROGRESSIVE ROLLOUT -->
+    <section class="py-10 md:py-20 px-8 md:px-12 lg:px-20 xl:px-32 2xl:px-40">
+      <div class="max-w-[2500px] mx-auto">
+        <Reveal><SectionHeading number="04" title="Progressive Rollout" /></Reveal>
+        <Reveal delay={0.1}>
+          <blockquote class="border-l-2 border-accent/40 pl-6 mb-12 max-w-[750px]">
+            <p class="text-text-body text-lg md:text-xl leading-relaxed italic">
+              We couldn't afford a big-bang release. Stakeholders needed to
+              see results early, and we needed to de-risk the migration. So
+              we designed a staggered rollout strategy, powered by
+              nginx-based traffic routing that let us surgically control who
+              saw the new flow.
+            </p>
+          </blockquote>
+        </Reveal>
+
+        <!-- Timeline -->
+        <div class="relative">
+          <div class="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-border md:-translate-x-px"></div>
+          <div class="space-y-12 md:space-y-16">
+            {[
+              { phase: 'Phase 1', title: 'Mobile MVP', desc: 'First release targeted mobile only, Lufthansa (LH) brand, British market, English & German languages.', detail: 'nginx configuration controlled routing — if conditions weren\'t met, users were transparently redirected to the legacy flow.' },
+              { phase: 'Phase 2', title: 'Expand by market & language', desc: 'As conversion data validated the new flow, we progressively opened to more markets and languages.', detail: 'Each expansion was a controlled toggle in our nginx routing layer — zero downtime, instant rollback capability.' },
+              { phase: 'Phase 3', title: 'Multi-tenant rollout', desc: 'Extended to additional airline brands (LX, OS, SN, 4Y, ITA), each requiring design system theming and tenant-specific configuration.', detail: 'Same staggered approach: one tenant at a time, validated by data before moving to the next.' },
+              { phase: 'Phase 4', title: 'Web rollout', desc: 'After proving the flow on mobile, rolled out to web across all brands and markets.', detail: 'The micro-frontend architecture meant web integration was additive, not a rewrite.' },
+              { phase: 'Phase 5', title: 'Full ownership', desc: 'Reached 100% of traffic across all devices, all tenants, all markets and languages.', detail: 'Legacy system fully decommissioned.' },
+            ].map((item, i) => (
+              <Reveal delay={i * 0.1}>
+                <div class="relative pl-12 md:pl-0 md:grid md:grid-cols-2 md:gap-12">
+                  <div class="absolute left-2.5 md:left-1/2 top-1 w-3 h-3 rounded-full bg-primary border-2 border-bg-base md:-translate-x-1.5"></div>
+                  <div class="md:text-right md:pr-8">
+                    <p class="text-primary text-sm tracking-widest uppercase">{item.phase}</p>
+                    <p class="font-serif text-xl md:text-2xl text-foreground mt-1">{item.title}</p>
+                  </div>
+                  <div class="md:pl-8 mt-2 md:mt-0">
+                    <p class="text-text-body leading-relaxed">{item.desc}</p>
+                    <p class="text-text-muted text-sm mt-2 italic">{item.detail}</p>
+                  </div>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISUAL WALKTHROUGH -->
+    <section class="py-10 md:py-20 px-8 md:px-12 lg:px-20 xl:px-32 2xl:px-40">
+      <div class="max-w-[2500px] mx-auto">
+        <Reveal><SectionHeading number="05" title="Visual Walkthrough" /></Reveal>
+
+        <div class="space-y-12 md:space-y-16">
+          <!-- Design System Components -->
+          <Reveal>
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 md:gap-6 items-center">
+              <img src="/images/component-flight-card.png" alt="Flight card component — route, date, and flight details" class="w-full h-auto rounded-sm" />
+              <img src="/images/component-dialog.png" alt="Confirmation dialog — change selection prompt" class="w-full h-auto rounded-lg" />
+              <img src="/images/component-price-bar.png" alt="Price and navigation bar — total price with CTA" class="w-full h-auto rounded-sm" />
+            </div>
+            <p class="text-text-muted text-base italic mt-4">
+              Components from the upgrade flow design system — built once, themed for six brands
+            </p>
+          </Reveal>
+
+          <!-- Mobile views -->
+          <div class="flex justify-center gap-4 md:gap-6">
+            <Reveal delay={0}>
+              <div class="w-[360px] rounded-sm overflow-hidden border border-border">
+                <img src="/images/mobile-entry-cropped.png" alt="Mobile upgrade flow — entry point with upgrade prompt" class="w-full h-auto block" />
+              </div>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <div class="w-[360px] rounded-sm overflow-hidden border border-border">
+                <img src="/images/mobile-selection-sticky-footer.png" alt="Mobile upgrade flow — seat selection screen" class="w-full h-auto block" />
+              </div>
+            </Reveal>
+            <Reveal delay={0.3}>
+              <div class="w-[360px] rounded-sm overflow-hidden border border-border">
+                <img src="/images/mobile-summary.png" alt="Mobile upgrade flow — selection summary screen" class="w-full h-auto block" />
+              </div>
+            </Reveal>
+          </div>
+          <Reveal delay={0.4}>
+            <p class="text-text-muted text-base italic mt-4 text-center">
+              The upgrade flow on mobile — from entry point through selection to summary
+            </p>
+          </Reveal>
+
+          <!-- Multi-brand showcase -->
+          <Reveal>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div class="border border-border rounded-sm overflow-hidden">
+                <img src="/images/upgrade-flow-lh.png" alt="Lufthansa upgrade flow landing page" class="w-full h-auto" />
+              </div>
+              <div class="border border-border rounded-sm overflow-hidden">
+                <img src="/images/upgrade-flow-os.png" alt="Austrian Airlines upgrade flow landing page" class="w-full h-auto" />
+              </div>
+            </div>
+            <p class="text-text-muted text-base italic mt-4">
+              One codebase, six brand identities — the same upgrade flow adapted for Lufthansa and Austrian
+            </p>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY RESULTS -->
+    <section class="py-10 md:py-20 px-8 md:px-12 lg:px-20 xl:px-32 2xl:px-40">
+      <div class="max-w-[2500px] mx-auto">
+        <Reveal><SectionHeading number="06" title="Key Results" /></Reveal>
+        <Reveal delay={0.15}>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+            <MetricCard label="Performance" value="50% faster" context="Load times and runtime performance vs. legacy system" />
+            <MetricCard label="Brands" value="6 airlines" context="LH, LX, OS, SN, 4Y, ITA — all from a single codebase" />
+            <MetricCard label="Conversion" value="4.2% increase" context="Data-driven UI patterns directly improved purchase completion" />
+            <MetricCard label="Bounce rate" value="21% reduction" context="Better perceived performance and UX kept users in the flow" />
+            <MetricCard label="Platforms" value="Web + iOS + Android" context="Single codebase serving all platforms via MFE + WebView" />
+            <MetricCard label="Accessibility" value="WCAG 2.1 AA" context="Contrast ratios, screen readers, and keyboard nav tested across 6 brand themes" />
+          </div>
+        </Reveal>
+      </div>
+    </section>
+
+    <div class="py-8"></div>
+  </main>
+  <Footer />
+</BaseLayout>

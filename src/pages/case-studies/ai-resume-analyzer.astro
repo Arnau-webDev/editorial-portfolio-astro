@@ -1,0 +1,470 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Header from '../../components/Header.astro';
+import Footer from '../../components/Footer.astro';
+import Reveal from '../../components/case-study/Reveal.astro';
+import StatCard from '../../components/case-study/StatCard.astro';
+import MetricCard from '../../components/case-study/MetricCard.astro';
+import SectionHeading from '../../components/case-study/SectionHeading.astro';
+import SubHeading from '../../components/case-study/SubHeading.astro';
+import DecisionCard from '../../components/case-study/DecisionCard.astro';
+import PuterArchitectureDiagram from '../../components/diagrams/PuterArchitectureDiagram.astro';
+---
+
+<BaseLayout
+  title="Resumer — AI Resume Analyzer | Arnau Marquilles"
+  description="How Puter's per-user cost model and client-side PDF processing made it possible to build a fully serverless AI resume scorer."
+>
+  <Header variant="case-study" />
+  <main class="pt-16">
+
+    <!-- HERO -->
+    <section class="py-10 px-8 md:px-12 lg:px-20 xl:px-32 2xl:px-40">
+      <div class="max-w-[2500px] mx-auto">
+        <Reveal>
+          <p class="text-primary text-base tracking-widest uppercase mb-6">Case Study</p>
+          <h1 class="font-serif text-3xl md:text-4xl lg:text-5xl text-foreground mb-6 max-w-[900px] leading-tight">
+            Building a Serverless AI Resume Analyzer
+          </h1>
+          <p class="text-text-body text-lg max-w-[640px] leading-relaxed mb-12">
+            How Puter's per-user cost model and client-side PDF processing
+            made it possible to build a fully serverless AI resume scorer —
+            and why getting the prompt calibration right was the hardest
+            engineering problem of the project.
+          </p>
+        </Reveal>
+
+        <!-- Metadata strip -->
+        <Reveal delay={0.15}>
+          <div class="flex flex-wrap gap-x-10 gap-y-4 mb-12 pb-12 border-b border-border">
+            {[
+              { label: 'Role', value: 'Solo Developer' },
+              { label: 'Timeline', value: '2 weeks' },
+              { label: 'Type', value: 'Personal Project' },
+              { label: 'Status', value: 'Shipped' },
+              { label: 'Stack', value: 'React Router 7 · Puter.js · pdf.js · Zustand' },
+              { label: 'Categories', value: '5 scored' },
+            ].map((item) => (
+              <div>
+                <p class="text-text-muted text-sm tracking-widest uppercase mb-1">{item.label}</p>
+                <p class="text-foreground text-base">{item.value}</p>
+              </div>
+            ))}
+          </div>
+        </Reveal>
+
+        <!-- Key stats -->
+        <Reveal delay={0.3}>
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <StatCard value="$0" label="Infrastructure cost" />
+            <StatCard value="100%" label="Client-side processing" />
+            <StatCard value="~5s" label="End-to-end analysis" />
+            <StatCard value="Any LLM" label="Swappable AI model" />
+          </div>
+        </Reveal>
+      </div>
+    </section>
+
+    <!-- THE PROBLEM -->
+    <section class="py-10 md:py-20 px-8 md:px-12 lg:px-20 xl:px-32 2xl:px-40">
+      <div class="max-w-[2500px] mx-auto">
+        <Reveal><SectionHeading number="01" title="The Problem" /></Reveal>
+        <div class="space-y-16 md:space-y-0 md:grid md:grid-cols-2 md:gap-12 md:items-start">
+          <!-- The Gap -->
+          <div class="max-w-[600px] md:max-w-none">
+            <Reveal><SubHeading title="The Gap" /></Reveal>
+            <Reveal delay={0.1}>
+              <ul class="space-y-4">
+                {[
+                  { title: 'Black-box scoring', desc: 'Most resume tools give you a number with no explanation of how it was derived' },
+                  { title: 'False positives', desc: 'Visually attractive resumes often score high even when ATS parsing would fail' },
+                  { title: 'Infrastructure cost', desc: 'Running AI analysis at scale typically requires backend servers, queues, and storage — all expensive' },
+                  { title: 'Privacy concerns', desc: 'Uploading a resume to an unknown server raises legitimate data handling questions' },
+                ].map((point) => (
+                  <li class="flex gap-3">
+                    <span class="text-accent mt-1.5 shrink-0">&mdash;</span>
+                    <div>
+                      <span class="text-foreground font-medium">{point.title}</span>
+                      <span class="text-text-body"> — {point.desc}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+
+          <!-- The Opportunity -->
+          <div class="max-w-[600px] md:max-w-none">
+            <Reveal><SubHeading title="The Opportunity" /></Reveal>
+            <Reveal delay={0.1}>
+              <ul class="space-y-4">
+                {[
+                  { title: 'Per-user quota', desc: "Puter's model means each user's AI usage is charged against their own account — zero marginal cost to the developer" },
+                  { title: 'Client-side PDF processing', desc: 'pdf.js renders pages in the browser, so the resume never leaves the user\'s device' },
+                  { title: 'Transparent scoring', desc: 'A well-designed prompt schema can return structured scores with category-level detail' },
+                  { title: 'Honest calibration', desc: 'Prompt engineering can enforce realistic score distributions — preventing the inflation that makes most tools useless' },
+                ].map((point) => (
+                  <li class="flex gap-3">
+                    <span class="text-accent mt-1.5 shrink-0">&mdash;</span>
+                    <div>
+                      <span class="text-foreground font-medium">{point.title}</span>
+                      <span class="text-text-body"> — {point.desc}</span>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section class="py-10 md:py-20 px-8 md:px-12 lg:px-20 xl:px-32 2xl:px-40">
+      <div class="max-w-[2500px] mx-auto">
+        <Reveal><SectionHeading number="02" title="How It Works" /></Reveal>
+        <Reveal delay={0.1}>
+          <blockquote class="border-l-2 border-accent/40 pl-6 mb-12 max-w-[750px]">
+            <p class="text-text-body text-lg md:text-xl leading-relaxed italic">
+              Three services, zero servers. Puter provides auth, file storage,
+              and AI access — all scoped to the authenticated user. The browser
+              handles PDF rendering. The result is a fully functional AI
+              analyzer with no backend to maintain.
+            </p>
+          </blockquote>
+        </Reveal>
+        <Reveal threshold={0.1}>
+          <PuterArchitectureDiagram />
+        </Reveal>
+      </div>
+    </section>
+
+    <!-- PUTER COST MODEL -->
+    <section class="py-10 md:py-20 px-8 md:px-12 lg:px-20 xl:px-32 2xl:px-40">
+      <div class="max-w-[2500px] mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+          <Reveal>
+            <p class="text-primary text-xs tracking-widest uppercase mb-4">Scalability</p>
+            <h3 class="font-serif text-2xl md:text-3xl text-foreground mb-4 leading-snug">
+              Each user funds their own usage
+            </h3>
+            <p class="text-text-body text-base leading-relaxed mb-4">
+              Puter gives every authenticated user a free monthly quota —
+              storage, compute, and AI credits. When a user runs an analysis,
+              it draws from their quota, not the developer's.
+            </p>
+            <p class="text-text-muted text-sm leading-relaxed">
+              This means the app scales to any number of users with zero
+              marginal infrastructure cost. The $0/month figure isn't a
+              temporary free tier — it's how the model works by design.
+            </p>
+          </Reveal>
+          <Reveal delay={0.15}>
+            <div class="border border-border rounded-md overflow-hidden">
+              <img
+                src="/images/resumer-individual-cost-per-user.png"
+                alt="Puter usage dashboard — Free plan, 2.13 MB used, $0.50 AI quota consumed"
+                class="w-full h-auto block"
+              />
+            </div>
+            <p class="text-text-muted text-sm italic mt-3">
+              A user's Puter dashboard after running several analyses — their quota, not yours
+            </p>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROMPT CALIBRATION -->
+    <section class="py-10 md:py-20 px-8 md:px-12 lg:px-20 xl:px-32 2xl:px-40">
+      <div class="max-w-[2500px] mx-auto">
+        <Reveal><SectionHeading number="03" title="Prompt Calibration — The Hard Part" /></Reveal>
+
+        <div class="space-y-16 md:space-y-0 md:grid md:grid-cols-2 md:gap-12 md:items-start mb-12">
+          <!-- ATS Severity Classification -->
+          <div class="max-w-[600px] md:max-w-none">
+            <Reveal><SubHeading title="ATS Severity Classification" /></Reveal>
+            <Reveal delay={0.1}>
+              <blockquote class="border-l-2 border-accent/40 pl-6 mb-8">
+                <p class="text-text-body text-base md:text-lg leading-relaxed italic">
+                  The key insight was building a two-tier severity taxonomy —
+                  distinguishing between issues that merely look bad and issues
+                  that actually break ATS parsing.
+                </p>
+              </blockquote>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <p class="text-text-muted text-xs tracking-widest uppercase mb-3">Minor issues — small penalty each</p>
+              <div class="grid grid-cols-2 gap-x-4 gap-y-2 mb-6">
+                {['Weak action verbs', 'Missing keywords', 'Vague quantification', 'Overused phrases', 'Inconsistent tense', 'Soft skill padding'].map((item) => (
+                  <div class="flex items-center gap-2">
+                    <span class="w-1 h-1 rounded-full bg-accent/50 shrink-0"></span>
+                    <span class="text-text-body text-sm">{item}</span>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+            <Reveal delay={0.2}>
+              <p class="text-text-muted text-xs tracking-widest uppercase mb-3">Major issues — 10–15pt penalty each</p>
+              <div class="space-y-2 mb-6">
+                {[
+                  { name: 'Spaced letters', desc: 'e.g. "J A V A S C R I P T" — ATS reads as unknown characters' },
+                  { name: 'Detached dates', desc: 'Floating in whitespace columns, parsed as unrelated text' },
+                  { name: 'Sidebar injection', desc: 'Two-column layout splits tokens, breaks skill extraction' },
+                  { name: 'Garbled text', desc: 'Decorative fonts or embedded images replacing actual text' },
+                ].map((item) => (
+                  <div class="flex gap-3">
+                    <span class="text-accent mt-1 shrink-0 text-base leading-none">&mdash;</span>
+                    <div>
+                      <span class="text-foreground font-medium text-sm">{item.name}</span>
+                      <span class="text-text-muted text-sm"> — {item.desc}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+            <Reveal delay={0.25}>
+              <div class="bg-bg-subtle border border-border rounded-sm px-5 py-4">
+                <p class="text-text-muted text-xs tracking-widest uppercase mb-2">Rule</p>
+                <p class="text-text-body text-sm leading-relaxed">
+                  2 or more MAJOR issues → overall score <span class="text-foreground font-medium">must fall below 50</span>, regardless of content quality.
+                </p>
+              </div>
+            </Reveal>
+          </div>
+
+          <!-- Score Scale -->
+          <div class="max-w-[600px] md:max-w-none">
+            <Reveal><SubHeading title="Score Scale" /></Reveal>
+            <Reveal delay={0.1}>
+              <div class="bg-bg-elevated border border-border rounded-sm overflow-hidden">
+                {[
+                  { range: '91–100', label: 'Precisely tailored', note: 'RESERVED for resumes written for this exact role' },
+                  { range: '81–90', label: 'Strong', note: 'Well-structured, strong keyword density' },
+                  { range: '66–80', label: 'Good', note: 'Clear structure, decent keyword match' },
+                  { range: '51–65', label: 'Parseable but flawed', note: 'ATS can read it, notable issues present' },
+                  { range: '31–50', label: 'Multiple problems', note: 'Structural failures hurt parsing' },
+                  { range: '0–30', label: 'Severely broken', note: 'ATS cannot reliably parse' },
+                ].map((row) => (
+                  <div class="flex items-start gap-4 px-5 py-4 border-b border-border last:border-0">
+                    <span class="font-mono text-accent text-sm shrink-0 w-16">{row.range}</span>
+                    <div>
+                      <p class="text-foreground text-sm font-medium">{row.label}</p>
+                      <p class="text-text-muted text-xs mt-0.5">{row.note}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </Reveal>
+          </div>
+        </div>
+
+        <!-- Code blocks -->
+        <div class="space-y-6">
+          <Reveal delay={0.1}>
+            <div class="bg-bg-subtle border border-accent/20 rounded-sm p-5 font-mono text-sm text-text-body overflow-x-auto">
+              <p class="text-text-muted text-xs mb-3">// Injected verbatim into the system prompt</p>
+              <pre class="whitespace-pre-wrap leading-relaxed">{`"Do NOT inflate scores.
+ A visually attractive resume with broken text extraction
+ is still a BAD ATS resume.
+ Score 91–100 is RESERVED for resumes precisely
+ tailored to this specific job description."`}</pre>
+            </div>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <div class="bg-bg-subtle border border-accent/20 rounded-sm p-5 font-mono text-sm text-text-body overflow-x-auto">
+              <p class="text-text-muted text-xs mb-3">// TypeScript interface injected verbatim as schema documentation</p>
+              <pre class="whitespace-pre-wrap leading-relaxed">{`interface AnalysisResult {
+  overallScore: number;        // 0–100
+  atsCompatibility: { score, issues, tips };
+  categories: { toneAndStyle, content, structure, skills };
+}`}</pre>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISUAL WALKTHROUGH -->
+    <section class="py-10 md:py-20 px-8 md:px-12 lg:px-20 xl:px-32 2xl:px-40">
+      <div class="max-w-[2500px] mx-auto">
+        <Reveal><SectionHeading number="04" title="Visual Walkthrough" /></Reveal>
+
+        <div class="space-y-12 md:space-y-16">
+          <!-- Auth + Upload -->
+          <Reveal>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+              <div class="border border-border rounded-sm overflow-hidden bg-bg-elevated h-full">
+                <img src="/images/resumer-upload.png" alt="Resumer — Upload form with company, job title, job description, and PDF dropzone" class="w-full h-full object-cover object-top" />
+              </div>
+              <div class="border border-border rounded-sm overflow-hidden bg-bg-elevated h-full">
+                <img src="/images/resumer-results-overview2.png" alt="Resumer — Results overview with sticky PDF viewer and score panel" class="w-full h-full object-cover object-right" />
+              </div>
+            </div>
+            <p class="text-text-muted text-base italic mt-4">
+              The upload form and the results panel — score breakdown, ATS compatibility, and per-category feedback
+            </p>
+          </Reveal>
+
+          <!-- Loading UX -->
+          <Reveal>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
+              <div>
+                <p class="text-primary text-xs tracking-widest uppercase mb-4">Loading experience</p>
+                <h3 class="font-serif text-2xl md:text-3xl text-foreground mb-4 leading-snug">
+                  Clean UX to keep the user engaged while the scan runs
+                </h3>
+                <p class="text-text-body text-base leading-relaxed mb-6">
+                  AI analysis takes ~5 seconds end-to-end. Rather than showing
+                  a spinner, the processing state breaks the wait into four
+                  visible steps — PDF rendering, text extraction, AI analysis,
+                  and result compilation.
+                </p>
+                <p class="text-text-muted text-sm leading-relaxed">
+                  A live status message tells the user exactly what's
+                  happening at each stage, while the animation keeps the
+                  interface feeling alive during the wait.
+                </p>
+              </div>
+              <div class="flex gap-4 md:gap-6 justify-center">
+                <div class="overflow-hidden flex-1 max-w-[300px] flex items-center justify-center p-4">
+                  <img src="/images/resumer-scan.gif" alt="Magnifying glass scanning animation — used during resume analysis step" class="w-full h-auto block" />
+                </div>
+                <div class="overflow-hidden flex-1 max-w-[300px] flex items-center justify-center p-4">
+                  <img src="/images/resumer-scan-2.gif" alt="Document loading animation — used during text extraction step" class="w-full h-auto block" />
+                </div>
+              </div>
+            </div>
+          </Reveal>
+
+          <!-- Harsh scoring -->
+          <Reveal>
+            <div class="flex flex-col gap-8 md:gap-10">
+              <div>
+                <p class="text-primary text-xs tracking-widest uppercase mb-4">Honest feedback</p>
+                <h3 class="font-serif text-2xl md:text-3xl text-foreground mb-4 leading-snug">
+                  Fair but unsparing when the resume earns it
+                </h3>
+                <p class="text-text-body text-base leading-relaxed mb-4">
+                  A score that's always high is useless. The prompt calibration
+                  ensures the model penalises real structural problems — spaced
+                  letters, detached dates, multi-column layouts — that would
+                  genuinely break ATS parsing.
+                </p>
+                <p class="text-text-muted text-sm leading-relaxed">
+                  Some categories carry more weight than others — ATS
+                  compatibility in particular can override an otherwise decent
+                  resume. Every issue flagged comes with a concrete fix.
+                </p>
+              </div>
+              <div class="grid grid-cols-2 gap-4">
+                <div class="border border-border rounded-md overflow-hidden">
+                  <img src="/images/Bad_score_overall.png" alt="Resume Review — overall score 44/100 with Tone & Style 72, Content 68, Structure 30, Skills 75" class="w-full h-auto block" />
+                </div>
+                <div class="border border-border rounded-md overflow-hidden h-full">
+                  <img src="/images/Bad_score_ATS.png" alt="ATS Score 38/100 — Needs Improvement with four actionable issues listed" class="w-full h-full object-cover object-top" />
+                </div>
+              </div>
+            </div>
+          </Reveal>
+        </div>
+      </div>
+    </section>
+
+    <!-- KEY TECHNICAL DECISIONS -->
+    <section class="py-10 md:py-20 px-8 md:px-12 lg:px-20 xl:px-32 2xl:px-40">
+      <div class="max-w-[2500px] mx-auto">
+        <Reveal><SectionHeading number="05" title="Key Technical Decisions" /></Reveal>
+        <Reveal delay={0.1}>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+            <DecisionCard
+              title="PDF Processing"
+              decision="Client-side via pdf.js"
+              rationale="Privacy was a first-class constraint: the resume should never leave the user's browser. pdf.js renders each page to a canvas at 4× scale, then converts to PNG for AI analysis. This also eliminates a backend upload pipeline entirely."
+              tradeoff="Adds bundle weight. Mitigated with dynamic import — pdf.js only loads when the user submits a file."
+            />
+            <DecisionCard
+              title="State Management"
+              decision="Zustand wrapping Puter SDK"
+              rationale="Zustand provides a clean, typed reactive interface over Puter's SDK calls. The store handles auth state, upload progress, analysis results, and error states — all with Redux DevTools support for debugging."
+              tradeoff="A thin abstraction to maintain if Puter's SDK API changes, but the coupling is intentionally shallow."
+            />
+            <DecisionCard
+              title="AI Response Schema"
+              decision="TypeScript interface injected as prompt documentation"
+              rationale="Injecting the TypeScript interface directly into the system prompt reliably constrains the model to return exactly the expected JSON structure. No post-processing or fallback parsing needed."
+              tradeoff="More prompt tokens per request, but the consistency benefit far outweighs the marginal cost."
+            />
+            <DecisionCard
+              title="Unique IDs"
+              decision="crypto.randomUUID() for serverless ID generation"
+              rationale="With no backend, there's no database sequence or UUID service. crypto.randomUUID() is collision-resistant and available in all modern browsers — sufficient for per-user session and file identification in Puter's KV store."
+              tradeoff="None meaningful at this scale."
+            />
+          </div>
+        </Reveal>
+      </div>
+    </section>
+
+    <!-- REFLECTION -->
+    <section class="py-10 md:py-20 px-8 md:px-12 lg:px-20 xl:px-32 2xl:px-40">
+      <div class="max-w-[2500px] mx-auto">
+        <Reveal><SectionHeading number="06" title="Reflection" /></Reveal>
+
+        <div class="space-y-16 md:space-y-0 md:grid md:grid-cols-2 md:gap-12 md:items-start mb-12">
+          <!-- What I Learned -->
+          <div class="max-w-[600px] md:max-w-none">
+            <Reveal><SubHeading title="What I Learned" /></Reveal>
+            <Reveal delay={0.1}>
+              <blockquote class="border-l-2 border-accent/40 pl-6 mb-8">
+                <p class="text-text-body text-base md:text-lg leading-relaxed italic">
+                  The technical implementation took a day. Getting the scoring
+                  to behave honestly took the rest of the project.
+                </p>
+              </blockquote>
+            </Reveal>
+            <Reveal delay={0.15}>
+              <ul class="space-y-4">
+                {[
+                  'Prompt iteration is engineering — it requires hypotheses, tests, and measurable outcomes, not intuition',
+                  'Client-side processing is underrated — browser APIs are powerful enough for tasks most developers reflexively push to a server',
+                  'Zustand + external SDK pattern is repeatable — clean abstraction over third-party state is worth the extra file',
+                ].map((item) => (
+                  <li class="flex gap-3">
+                    <span class="text-accent mt-1.5 shrink-0">&mdash;</span>
+                    <span class="text-text-body leading-relaxed">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </Reveal>
+          </div>
+
+          <!-- Results -->
+          <div class="max-w-[600px] md:max-w-none">
+            <Reveal><SubHeading title="Results" /></Reveal>
+            <Reveal delay={0.1}>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <MetricCard label="Infrastructure cost" value="$0 / month" context="Puter's per-user model means the developer pays nothing at any scale" />
+                <MetricCard label="End-to-end processing" value="~5 seconds" context="PDF render + AI analysis + result display from submit to results" />
+                <MetricCard label="Privacy" value="Zero server exposure" context="Resume content never leaves the user's browser — processed entirely client-side" />
+              </div>
+            </Reveal>
+          </div>
+        </div>
+
+        <Reveal delay={0.2}>
+          <p class="text-text-body text-lg leading-relaxed italic max-w-[750px]">
+            Resumer demonstrated that the combination of Puter's platform
+            and modern browser APIs can eliminate entire infrastructure tiers.
+            The project wasn't primarily about the AI feature — it was about
+            proving that tailored prompt engineering, not backend complexity, is
+            what makes AI-powered tools genuinely useful.
+          </p>
+        </Reveal>
+      </div>
+    </section>
+
+    <div class="py-8"></div>
+  </main>
+  <Footer />
+</BaseLayout>
