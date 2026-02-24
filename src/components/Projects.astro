@@ -1,0 +1,65 @@
+---
+import { caseStudies } from '../data/projects';
+
+const MAX_VISIBLE_TAGS = 4;
+---
+
+<section id="projects" class="py-10 md:py-20 px-8 md:px-12 lg:px-20 xl:px-32 2xl:px-40">
+  <div class="max-w-[2500px] mx-auto">
+    <!-- Heading -->
+    <div
+      data-reveal
+      data-reveal-threshold="0.3"
+      class="text-center md:text-left"
+    >
+      <p class="text-primary text-xl tracking-widest uppercase mb-4">Portfolio</p>
+      <h2 class="font-serif text-5xl md:text-6xl text-foreground mb-4">Projects</h2>
+      <p class="text-text-muted text-xl mb-20">Selected case studies</p>
+    </div>
+
+    <!-- Cards grid -->
+    <div class="flex flex-wrap justify-center gap-8 [&>*]:w-full [&>*]:lg:w-[calc(50%-1rem)] [&>*]:xl:w-[calc(33.333%-1.375rem)]">
+      {caseStudies.map((study, i) => {
+        const visibleTags = study.tags.slice(0, MAX_VISIBLE_TAGS);
+        return (
+          <a
+            href={`/case-studies/${study.id}`}
+            data-reveal
+            style={`--reveal-delay: ${i * 0.15}s;`}
+            class="group block bg-bg-elevated border border-border rounded-sm overflow-hidden transition-colors duration-300 hover:border-border-hover hover:-translate-y-1"
+          >
+            <!-- Thumbnail placeholder -->
+            <div class="relative aspect-[16/10] bg-bg-subtle flex items-center justify-center overflow-hidden">
+              <span class="font-serif italic text-2xl text-text-muted opacity-40 select-none">
+                {study.title}
+              </span>
+              <div
+                class="absolute inset-0 bg-accent opacity-0 group-hover:opacity-[0.06] transition-opacity duration-300"
+                aria-hidden="true"
+              ></div>
+            </div>
+
+            <div class="p-6 flex flex-col gap-3">
+              <span class="text-text-muted text-sm tracking-widest uppercase">
+                {study.role}
+              </span>
+              <h3 class="font-serif text-2xl text-foreground group-hover:text-accent transition-colors duration-300 leading-tight">
+                {study.title}
+              </h3>
+              <p class="text-text-body text-xl leading-relaxed line-clamp-2">
+                {study.description}
+              </p>
+              <div class="flex flex-wrap gap-2 mt-1">
+                {visibleTags.map((t) => (
+                  <span class="text-sm text-text-muted bg-bg-subtle border border-border rounded-full px-3 py-1">
+                    {t}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </a>
+        );
+      })}
+    </div>
+  </div>
+</section>

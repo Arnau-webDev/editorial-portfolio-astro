@@ -1,0 +1,55 @@
+---
+import { skillCategories } from '../data/skills';
+
+const CARD_ANIM_DURATION = 0.1; // seconds between each card's animation
+---
+
+<section
+  id="skills"
+  class="py-10 md:py-20 px-8 md:px-12 xl:px-20 2xl:px-32 3xl:px-40"
+>
+  <div class="max-w-[2500px] mx-auto">
+    <!-- Section heading -->
+    <div
+      data-reveal
+      data-reveal-threshold="0.3"
+      class="text-center md:text-left"
+    >
+      <p class="text-primary text-xl tracking-widest uppercase mb-4">Toolkit</p>
+      <h2 class="font-serif text-5xl md:text-6xl text-foreground mb-4">Skills</h2>
+      <p class="text-text-muted text-xl mb-20">Technologies I work with</p>
+    </div>
+
+    <div class="flex flex-wrap justify-center gap-x-10 xl:gap-x-20 gap-y-14 [&>*]:flex-[0_0_300px] [&>*]:lg:flex-[0_0_400px] [&>*]:3xl:flex-[0_0_600px]">
+      {skillCategories.map((cat, catIdx) => (
+        <div
+          data-reveal
+          style={`--reveal-delay: ${catIdx * CARD_ANIM_DURATION}s;`}
+          class="group"
+        >
+          <h3 class="font-serif text-xl lg:text-2xl text-foreground mb-5 text-center">
+            {cat.name}
+          </h3>
+          <div class="grid grid-cols-5 gap-6">
+            {cat.items.map((item, itemIdx) => (
+              <div
+                data-reveal
+                style={`--reveal-delay: ${catIdx * CARD_ANIM_DURATION + 0.3 + itemIdx * 0.08}s;`}
+                class="flex flex-col items-center gap-1.5"
+              >
+                <div class={`w-10 h-10 xl:w-12 xl:h-12 3xl:w-16 3xl:h-16 rounded-md border border-border flex items-center justify-center ${item.variant === 'dark' ? 'bg-zinc-900' : 'bg-bg-elevated'}`}>
+                  <div class="w-8 h-8 xl:w-8 xl:h-8 3xl:w-12 3xl:h-12 flex items-center justify-center">
+                    <Fragment set:html={item.svg} />
+                  </div>
+                </div>
+                <span class="text-sm text-text-muted text-center leading-tight max-w-[72px]">
+                  {item.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
