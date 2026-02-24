@@ -11,7 +11,7 @@ import DecisionCard from '../../components/case-study/DecisionCard.astro';
 
 // Baseline Lighthouse scores (React 18 + Vite SPA, measured before migration)
 const baseline = {
-  performance: 58,
+  performance: 56,
   accessibility: 92,
   bestPractices: 100,
   seo: 90,
@@ -21,9 +21,9 @@ const baseline = {
   cls: '0.01',
 };
 
-// After scores (Astro SSG — update after final Lighthouse audit)
+// After scores (Astro SSG — measured on localhost preview)
 const after = {
-  performance: 100,
+  performance: 97,
   accessibility: 100,
   bestPractices: 100,
   seo: 100,
@@ -36,7 +36,7 @@ const after = {
 
 <BaseLayout
   title="This Portfolio — React → Astro Migration | Arnau Marquilles"
-  description="How I rebuilt my portfolio from a React 18 SPA to a fully static Astro site, eliminating the React runtime and achieving a 100 Lighthouse performance score."
+  description="How I rebuilt my portfolio from a React 18 SPA to a fully static Astro site, eliminating the React runtime and achieving a 97 Lighthouse performance score."
 >
   <Header variant="case-study" />
   <main class="pt-16">
@@ -78,7 +78,7 @@ const after = {
         <!-- Key stats -->
         <Reveal delay={0.3}>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-            <StatCard value="100" label="Lighthouse Performance" />
+            <StatCard value="97" label="Lighthouse Performance" />
             <StatCard value="0 KB" label="React Runtime" />
             <StatCard value="7" label="npm Packages" />
             <StatCard value="< 0.5s" label="FCP (Time to First Paint)" />
@@ -112,7 +112,7 @@ const after = {
                   { title: '~350 KB JS', desc: 'React runtime + React Router + all component libraries shipped on every page load' },
                   { title: 'Empty HTML shell', desc: 'The browser downloaded the page, then had to fetch, parse, and execute JS before rendering any content' },
                   { title: '65 npm packages', desc: 'Including react, react-dom, react-router-dom, tech-stack-icons, lucide-react, @radix-ui/*, tailwindcss-animate, and more' },
-                  { title: 'Lighthouse Performance: 58', desc: 'LCP of 4.8s, TBT of 340ms — failing on the most user-visible metrics' },
+                  { title: 'Lighthouse Performance: 56', desc: 'LCP of 4.8s, TBT of 340ms — failing on the most user-visible metrics' },
                 ].map((point) => (
                   <li class="flex gap-3">
                     <span class="text-accent mt-1.5 shrink-0">&mdash;</span>
@@ -468,8 +468,8 @@ export const skillCategories = [
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             <MetricCard
               label="Performance"
-              value="58 → 100"
-              context="42-point gain. The single biggest driver: pre-rendered HTML means content is immediately visible — no hydration wait."
+              value="56 → 97"
+              context="41-point gain. The single biggest driver: pre-rendered HTML means content is immediately visible — no hydration wait."
             />
             <MetricCard
               label="FCP"
