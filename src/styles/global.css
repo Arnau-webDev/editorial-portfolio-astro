@@ -1,0 +1,192 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 240 6% 3.9%;
+    --foreground: 0 0% 98%;
+
+    --card: 240 4% 9.4%;
+    --card-foreground: 0 0% 98%;
+
+    --popover: 240 4% 9.4%;
+    --popover-foreground: 0 0% 98%;
+
+    --primary: 214 25% 55%;
+    --primary-foreground: 0 0% 98%;
+
+    --secondary: 240 4% 15.7%;
+    --secondary-foreground: 0 0% 98%;
+
+    --muted: 240 4% 15.7%;
+    --muted-foreground: 240 5% 66.5%;
+
+    --accent: 214 25% 55%;
+    --accent-foreground: 0 0% 98%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+
+    --border: 240 4% 15.7%;
+    --input: 240 4% 15.7%;
+    --ring: 214 25% 55%;
+
+    --radius: 0.25rem;
+
+    --text-body: 240 5% 83.5%;
+    --text-muted: 240 5% 66.5%;
+    --accent-hover: 214 30% 65%;
+    --bg-elevated: 240 4% 9.4%;
+    --bg-subtle: 240 4% 15.7%;
+    --border-hover: 240 4% 24.7%;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #09090b;
+    font-size: 16px;
+    overflow-x: hidden;
+  }
+
+  @media (min-width: 640px) {
+    html { font-size: 18px; }
+  }
+
+  @media (min-width: 2000px) {
+    html { font-size: 24px; }
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+    overflow-x: hidden;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  /* Custom thin scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #09090b;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #27272a;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3f3f46;
+  }
+
+  /* Firefox */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: #27272a #09090b;
+  }
+}
+
+@layer utilities {
+  .font-serif-display {
+    font-family: 'Playfair Display', serif;
+  }
+}
+
+/* ── Reveal animation ── */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+  transition-delay: var(--reveal-delay, 0s);
+}
+[data-reveal].is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Arrow connector (Experience section) ── */
+.arrow-line {
+  stroke-dasharray: 80;
+  stroke-dashoffset: 80;
+  transition: stroke-dashoffset 0.3s ease-out 0.3s;
+}
+.arrow-head {
+  opacity: 0;
+  transition: opacity 0.4s ease-out 0.55s;
+}
+[data-reveal-arrow].is-visible .arrow-line {
+  stroke-dashoffset: 0;
+}
+[data-reveal-arrow].is-visible .arrow-head {
+  opacity: 1;
+}
+
+/* ── Hero name reveal ── */
+.hero-name-span {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.hero-name-span.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Keyframes ── */
+@keyframes heroRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes heroRotateReverse {
+  from { transform: rotate(360deg); }
+  to { transform: rotate(0deg); }
+}
+
+@keyframes heroDotFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes heroScrollLine {
+  0% { transform: translateY(-100%); }
+  50% { transform: translateY(0); }
+  100% { transform: translateY(100%); }
+}
+
+@keyframes heroCursorBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* ── Diagram drawn state ── */
+.diagram-node {
+  opacity: 0;
+  transform: translateY(-16px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+[data-diagram].is-drawn .diagram-node {
+  opacity: 1;
+  transform: translateY(0);
+}
+.diagram-layer {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+[data-diagram].is-drawn .diagram-layer {
+  opacity: 1;
+  transform: translateY(0);
+}
+.diagram-line {
+  opacity: 0;
+  transition: opacity 0.6s ease;
+}
+[data-diagram].is-drawn .diagram-line {
+  opacity: 0.5;
+}
