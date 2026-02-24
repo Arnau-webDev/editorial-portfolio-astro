@@ -1,0 +1,175 @@
+---
+// Puter Architecture Diagram — animated by reveal.ts when data-diagram gets .is-drawn class
+---
+
+<div
+  data-diagram
+  class="bg-bg-elevated border border-border rounded-sm p-6 md:p-10 lg:p-12 overflow-x-auto"
+>
+  <p class="text-text-muted text-sm tracking-widest uppercase mb-10 text-center">
+    Application data flow
+  </p>
+
+  <!-- 01 Auth -->
+  <div class="flex justify-center mb-2 diagram-layer" style="transition-delay: 0s;">
+    <div class="border border-accent/30 rounded-sm px-6 py-4 text-center min-w-[240px]">
+      <p class="text-accent text-[10px] tracking-widest uppercase mb-1">01 · Authentication</p>
+      <p class="text-text-body text-sm font-medium">Puter OAuth</p>
+      <p class="text-text-muted text-xs mt-1">User authenticated — AI and storage quota scoped to their account</p>
+    </div>
+  </div>
+
+  <!-- Vertical connector -->
+  <div class="flex justify-center" style="height: 32px;">
+    <svg width="2" height="32" viewBox="0 0 2 32">
+      <line x1="1" y1="0" x2="1" y2="32" stroke="hsl(214 25% 55%)" stroke-width="1" stroke-dasharray="4 4"
+        class="diagram-line" style="transition-delay: 0.2s;" />
+    </svg>
+  </div>
+
+  <!-- 02 Inputs -->
+  <div class="diagram-layer" style="transition-delay: 0.3s;">
+    <p class="text-text-muted text-[10px] tracking-widest uppercase text-center mb-3">02 · User Inputs</p>
+    <div class="flex flex-wrap justify-center gap-3">
+      {['Company Name', 'Job Title', 'Job Description', 'CV PDF'].map((label, i) => (
+        <div
+          class="diagram-layer border border-border rounded-sm px-4 py-2.5 text-center bg-bg-subtle"
+          style={`transition-delay: ${0.3 + i * 0.07}s;`}
+        >
+          <p class="text-text-body text-xs">{label}</p>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Converging lines → pdf.js (desktop) -->
+  <div class="hidden md:flex justify-center" style="height: 48px;">
+    <svg width="560" height="48" viewBox="0 0 560 48" fill="none" class="overflow-visible">
+      {[70, 210, 350, 490].map((x, i) => (
+        <line x1={x} y1="0" x2={280} y2="48"
+          stroke="hsl(214 25% 55%)" stroke-width="1" stroke-dasharray="4 4"
+          class="diagram-line" style={`transition-delay: ${0.65 + i * 0.05}s;`} />
+      ))}
+      <polygon points="275,44 280,52 285,44" fill="hsl(214 25% 55%)"
+        class="diagram-line" style="transition-delay: 0.8s;" />
+    </svg>
+  </div>
+  <div class="flex md:hidden justify-center" style="height: 32px;">
+    <svg width="2" height="32" viewBox="0 0 2 32">
+      <line x1="1" y1="0" x2="1" y2="32" stroke="hsl(214 25% 55%)" stroke-width="1" stroke-dasharray="4 4"
+        class="diagram-line" style="transition-delay: 0.65s;" />
+    </svg>
+  </div>
+
+  <!-- 03 Client-side Processing -->
+  <div class="diagram-layer border border-border rounded-sm p-4 md:p-5 max-w-[600px] mx-auto mb-2" style="transition-delay: 0.85s;">
+    <p class="text-text-muted text-[10px] tracking-widest uppercase text-center mb-3">03 · Client-side Processing</p>
+    <div class="flex items-start gap-2 px-3 py-2.5 bg-bg-subtle/60 rounded-sm">
+      <span class="w-1.5 h-1.5 rounded-full bg-accent/60 shrink-0 mt-1.5"></span>
+      <div>
+        <p class="text-text-body text-xs font-medium">pdf.js</p>
+        <p class="text-text-muted text-[11px] mt-0.5">Parses the PDF in-browser — extracts raw text and renders each page as a PNG at 4× scale. Nothing is uploaded to a server.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vertical connector -->
+  <div class="flex justify-center" style="height: 32px;">
+    <svg width="2" height="32" viewBox="0 0 2 32">
+      <line x1="1" y1="0" x2="1" y2="32" stroke="hsl(214 25% 55%)" stroke-width="1" stroke-dasharray="4 4"
+        class="diagram-line" style="transition-delay: 1.0s;" />
+    </svg>
+  </div>
+
+  <!-- 04 State & Persistence -->
+  <div class="flex items-stretch justify-center gap-0 max-w-[680px] mx-auto mb-2">
+    <div class="diagram-layer border border-border rounded-sm p-4 md:p-5 flex-1" style="transition-delay: 1.05s;">
+      <p class="text-text-muted text-[10px] tracking-widest uppercase mb-3">04 · State &amp; Persistence</p>
+      <div class="flex items-start gap-2 px-3 py-2.5 bg-bg-subtle/60 rounded-sm">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent/60 shrink-0 mt-1.5"></span>
+        <div>
+          <p class="text-text-body text-xs font-medium">Zustand Store</p>
+          <p class="text-text-muted text-[11px] mt-0.5">Puter SDK wrapper — manages auth state, upload flow, and analysis results reactively</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Horizontal connector to File Storage -->
+    <div class="hidden sm:flex items-center px-1" style="width: 48px;">
+      <svg width="48" height="2" viewBox="0 0 48 2">
+        <line x1="0" y1="1" x2="48" y2="1" stroke="hsl(214 25% 55%)" stroke-width="1" stroke-dasharray="4 4"
+          class="diagram-line" style="transition-delay: 1.15s;" />
+      </svg>
+    </div>
+
+    <!-- File Storage -->
+    <div class="hidden sm:flex diagram-layer border border-border rounded-sm p-4 flex-col justify-center text-center min-w-[140px]"
+      style="transition-delay: 1.2s;">
+      <p class="text-text-muted text-[10px] tracking-widest uppercase mb-1">Puter</p>
+      <p class="text-text-body text-xs font-medium">File Storage</p>
+      <p class="text-text-muted text-[11px] mt-1">Saves PDF + PNG assets per user</p>
+    </div>
+  </div>
+
+  <!-- Vertical connector -->
+  <div class="flex justify-center" style="height: 32px;">
+    <svg width="2" height="32" viewBox="0 0 2 32">
+      <line x1="1" y1="0" x2="1" y2="32" stroke="hsl(214 25% 55%)" stroke-width="1" stroke-dasharray="4 4"
+        class="diagram-line" style="transition-delay: 1.2s;" />
+    </svg>
+  </div>
+
+  <!-- 05 AI Analysis -->
+  <div class="diagram-layer border border-accent/20 rounded-sm p-4 md:p-5 max-w-[600px] mx-auto mb-2" style="transition-delay: 1.3s;">
+    <p class="text-accent text-[10px] tracking-widest uppercase text-center mb-3">05 · AI Analysis</p>
+    <div class="space-y-3">
+      <div class="diagram-layer flex items-start gap-2 px-3 py-2.5 bg-bg-subtle/60 rounded-sm" style="transition-delay: 1.35s;">
+        <span class="w-1.5 h-1.5 rounded-full bg-accent/60 shrink-0 mt-1.5"></span>
+        <div>
+          <p class="text-text-body text-xs font-medium">Prompt Builder</p>
+          <p class="text-text-muted text-[11px] mt-0.5">Combines TypeScript interface schema + company/role inputs + extracted PDF text into a calibrated system prompt</p>
+        </div>
+      </div>
+      <div class="border-t border-border/50 pt-3">
+        <div class="diagram-layer flex items-start gap-2 px-3 py-2.5 bg-bg-subtle/60 rounded-sm" style="transition-delay: 1.42s;">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent/60 shrink-0 mt-1.5"></span>
+          <div>
+            <p class="text-text-body text-xs font-medium">Puter AI Chat — GPT-5.2</p>
+            <p class="text-text-muted text-[11px] mt-0.5">Returns structured JSON matching the injected interface — score, ATS analysis, per-category feedback</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diverging lines → outputs (desktop) -->
+  <div class="hidden md:flex justify-center" style="height: 48px;">
+    <svg width="460" height="48" viewBox="0 0 460 48" fill="none" class="overflow-visible">
+      {[115, 345].map((x, i) => (
+        <line x1={230} y1="0" x2={x} y2="48"
+          stroke="hsl(214 25% 55%)" stroke-width="1" stroke-dasharray="4 4"
+          class="diagram-line" style={`transition-delay: ${1.55 + i * 0.08}s;`} />
+      ))}
+    </svg>
+  </div>
+  <div class="flex md:hidden justify-center" style="height: 32px;">
+    <svg width="2" height="32" viewBox="0 0 2 32">
+      <line x1="1" y1="0" x2="1" y2="32" stroke="hsl(214 25% 55%)" stroke-width="1" stroke-dasharray="4 4"
+        class="diagram-line" style="transition-delay: 1.55s;" />
+    </svg>
+  </div>
+
+  <!-- 06 Output -->
+  <div class="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
+    <div class="diagram-layer border border-border rounded-sm p-4 text-center flex-1 max-w-[260px] mx-auto sm:mx-0" style="transition-delay: 1.65s;">
+      <p class="text-text-muted text-[10px] tracking-widest uppercase mb-1">Puter</p>
+      <p class="text-text-body text-xs font-medium">KV Store → History View</p>
+      <p class="text-text-muted text-[11px] mt-1.5">Result JSON stored per application — user can browse all past analyses</p>
+    </div>
+    <div class="diagram-layer border border-accent/30 rounded-sm p-4 text-center flex-1 max-w-[260px] mx-auto sm:mx-0" style="transition-delay: 1.72s;">
+      <p class="text-accent text-[10px] tracking-widest uppercase mb-1">06 · Output</p>
+      <p class="text-text-body text-xs font-medium">Results View</p>
+      <p class="text-text-muted text-[11px] mt-1.5">Overall score, ATS panel, per-category accordion feedback</p>
+    </div>
+  </div>
+</div>

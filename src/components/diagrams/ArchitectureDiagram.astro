@@ -1,0 +1,169 @@
+---
+// Architecture diagram — animated by reveal.ts when data-diagram gets .is-drawn class
+---
+
+<div
+  data-diagram
+  class="bg-bg-elevated border border-border rounded-sm p-6 md:p-10 lg:p-14 overflow-x-auto"
+>
+  <p class="text-text-muted text-sm tracking-widest uppercase mb-10 md:mb-14 text-center">
+    Simple architecture overview
+  </p>
+
+  <!-- Layer 1: Entry Points -->
+  <div class="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 mb-2">
+    {[
+      { name: 'iOS App', sub: 'Native Shell', isMobile: true },
+      { name: 'Lufthansa Websites', sub: 'MFE Host', isMobile: false },
+      { name: 'Android App', sub: 'Native Shell', isMobile: true },
+    ].map((node, i) => (
+      <div
+        class="diagram-node border border-border rounded-sm text-center transition-all duration-700 px-6 py-4 min-w-[150px]"
+        style={`transition-delay: ${i * 0.12}s;`}
+      >
+        {node.isMobile ? (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-accent mx-auto mb-2">
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+            <path d="M12 18h.01" />
+          </svg>
+        ) : (
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" class="text-accent mx-auto mb-2">
+            <circle cx="12" cy="12" r="10" />
+            <path d="M2 12h20" />
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+          </svg>
+        )}
+        <p class="text-text-body text-sm">{node.name}</p>
+        <p class="text-text-muted text-xs mt-1">{node.sub}</p>
+      </div>
+    ))}
+  </div>
+
+  <!-- SVG Connectors: Entry → Integration (desktop) -->
+  <div class="hidden md:flex justify-center" style="height: 48px;">
+    <svg width="420" height="48" viewBox="0 0 420 48" fill="none" class="overflow-visible">
+      {[90, 210, 330].map((x, i) => (
+        <line
+          x1={x} y1="0" x2={210} y2="48"
+          stroke="hsl(214 25% 55%)"
+          stroke-width="1"
+          stroke-dasharray="4 4"
+          class="diagram-line"
+          style={`transition-delay: ${0.4 + i * 0.1}s;`}
+        />
+      ))}
+      <polygon
+        points="205,48 210,56 215,48"
+        fill="hsl(214 25% 55%)"
+        class="diagram-line"
+        style="transition-delay: 0.7s;"
+      />
+    </svg>
+  </div>
+  <!-- Mobile connector -->
+  <div class="flex md:hidden justify-center" style="height: 32px;">
+    <svg width="2" height="32" viewBox="0 0 2 32">
+      <line x1="1" y1="0" x2="1" y2="32" stroke="hsl(214 25% 55%)" stroke-width="1" stroke-dasharray="4 4"
+        class="diagram-line" style="transition-delay: 0.4s;" />
+    </svg>
+  </div>
+
+  <!-- Layer 2: Integration Layer -->
+  <div
+    class="diagram-layer border border-accent/20 rounded-sm p-4 md:p-6 max-w-[780px] mx-auto mb-2"
+    style="transition-delay: 0.5s;"
+  >
+    <p class="text-accent text-xs tracking-widest uppercase text-center mb-3">
+      Integration Layer
+    </p>
+    <div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-6">
+      {[
+        { label: 'Module Federation', desc: 'MFE runtime' },
+        { label: 'WebView Bridge', desc: 'Native ↔ Web' },
+        { label: 'Event Bus', desc: 'Cross-app messaging' },
+      ].map((item) => (
+        <div class="flex items-center gap-2 px-3 py-2 bg-bg-subtle/50 rounded-sm">
+          <span class="w-1.5 h-1.5 rounded-full bg-accent/60 shrink-0"></span>
+          <div>
+            <p class="text-text-body text-xs font-medium">{item.label}</p>
+            <p class="text-text-muted text-[11px]">{item.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+
+  <!-- Connector: Integration → Core -->
+  <div class="hidden md:flex justify-center" style="height: 32px;">
+    <svg width="2" height="32" viewBox="0 0 2 32">
+      <line x1="1" y1="0" x2="1" y2="32" stroke="hsl(214 25% 55%)" stroke-width="1" stroke-dasharray="4 4"
+        class="diagram-line" style="transition-delay: 0.7s;" />
+    </svg>
+  </div>
+  <div class="flex md:hidden justify-center" style="height: 24px;">
+    <svg width="2" height="24" viewBox="0 0 2 24">
+      <line x1="1" y1="0" x2="1" y2="24" stroke="hsl(214 25% 55%)" stroke-width="1" stroke-dasharray="4 4"
+        class="diagram-line" style="transition-delay: 0.7s;" />
+    </svg>
+  </div>
+
+  <!-- Layer 3: Core Application -->
+  <div
+    class="diagram-layer border border-accent/30 rounded-sm max-w-[780px] mx-auto mb-2 overflow-hidden"
+    style="transition-delay: 0.7s;"
+  >
+    <!-- Core header bar -->
+    <div class="bg-accent/[0.06] border-b border-accent/20 px-6 py-3 flex items-center justify-between">
+      <p class="text-accent text-sm font-medium">Upgrade Flow</p>
+      <p class="text-text-muted text-xs hidden sm:block">React · Next.js · TypeScript · Vite</p>
+    </div>
+
+    <div class="p-5 md:p-8">
+      <!-- Inner modules grid -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+        {[
+          { name: 'Upgrade Selection', icon: '◫' },
+          { name: 'Selection Summary', icon: '◈' },
+          { name: 'Payment Flow', icon: '⊡' },
+          { name: 'Confirmation', icon: '◉' },
+        ].map((mod, i) => (
+          <div
+            class="diagram-node bg-bg-subtle border border-border rounded-sm px-3 py-3 text-center"
+            style={`transition-delay: ${0.9 + i * 0.08}s;`}
+          >
+            <span class="text-accent text-lg block mb-1">{mod.icon}</span>
+            <p class="text-text-body text-xs">{mod.name}</p>
+          </div>
+        ))}
+      </div>
+
+      <!-- Brand tenant badges -->
+      <div class="border-t border-border/60 pt-5 diagram-layer" style="transition-delay: 1.2s;">
+        <p class="text-text-muted text-[11px] tracking-widest uppercase text-center mb-3">
+          Multi-Tenant · 6 Brands
+        </p>
+        <div class="flex flex-wrap justify-center gap-2">
+          {[
+            { code: 'LH', color: '#0047ab' },
+            { code: 'LX', color: '#c8102e' },
+            { code: 'OS', color: '#0047ab' },
+            { code: 'SN', color: '#c8102e' },
+            { code: '4Y', color: '#0047ab' },
+            { code: 'ITA', color: '#c8102e' },
+          ].map((brand, i) => (
+            <div
+              class="diagram-node relative rounded-sm px-4 py-2 text-sm text-center min-w-[52px] border border-border overflow-hidden"
+              style={`transition-delay: ${1.3 + i * 0.07}s;`}
+            >
+              <div
+                class="absolute inset-x-0 top-0 h-[2px]"
+                style={`background-color: ${brand.color}; opacity: 0.7;`}
+              ></div>
+              <span class="text-text-body font-medium">{brand.code}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+---
+interface Props {
+  class?: string;
+  delay?: number;
+  threshold?: number;
+}
+
+const { class: className = '', delay = 0, threshold = 0.15 } = Astro.props;
+---
+
+<div
+  data-reveal
+  data-reveal-threshold={threshold}
+  class={className}
+  style={delay > 0 ? `--reveal-delay: ${delay}s;` : undefined}
+>
+  <slot />
+</div>
