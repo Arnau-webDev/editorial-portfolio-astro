@@ -144,7 +144,7 @@ const after = {
                   </div>
                 ))}
               </div>
-              <div class="bg-bg-subtle border border-border rounded-sm p-4 space-y-2">
+              <div class="bg-bg-subtle border border-border rounded-sm p-4 space-y-2 mb-6">
                 {[
                   { label: 'FCP', value: baseline.fcp },
                   { label: 'LCP', value: baseline.lcp },
@@ -157,6 +157,11 @@ const after = {
                   </div>
                 ))}
               </div>
+              <img
+                src="/images/Lighthouse_score_react.png"
+                alt="Lighthouse audit screenshot for the React/Vite version showing a performance score of 56"
+                class="w-full rounded-sm border border-border"
+              />
             </Reveal>
           </div>
         </div>
@@ -451,7 +456,7 @@ export const skillCategories = [
         <Reveal><SectionHeading number="06" title="Results" /></Reveal>
         <Reveal delay={0.1}>
           <p class="text-text-muted text-xs tracking-widest uppercase mb-6">After — Astro SSG · Mobile Lighthouse</p>
-          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+          <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
             {[
               { label: 'Performance', value: after.performance },
               { label: 'Accessibility', value: after.accessibility },
@@ -464,6 +469,11 @@ export const skillCategories = [
               </div>
             ))}
           </div>
+          <img
+            src="/images/Lighthouse_score_astro.png"
+            alt="Lighthouse audit screenshot for the Astro SSG version showing a performance score of 97"
+            class="w-full rounded-sm border border-accent/20 mb-8"
+          />
 
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             <MetricCard
