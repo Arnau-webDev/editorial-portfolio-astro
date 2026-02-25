@@ -25,9 +25,9 @@ export const caseStudies: CaseStudy[] = [
   },
   {
     id: 'this-portfolio',
-    title: 'This Portfolio — React → Astro Migration',
+    title: 'This Portfolio — Why Astro SSG',
     description:
-      'Rebuilt this portfolio from a React 18 SPA to a fully static Astro site — eliminating the React runtime, replacing 65 npm packages with 7, and achieving a 100 Lighthouse performance score.',
+      'Why Astro SSG is the right tool for a fast, SEO-friendly portfolio — pre-rendered HTML, zero runtime JS, self-hosted fonts, and a perfect 100 Lighthouse performance score.',
     role: 'Solo Developer',
     tags: ['Astro.js', 'TypeScript', 'Tailwind CSS', 'Vanilla JS', 'SSG'],
   },
