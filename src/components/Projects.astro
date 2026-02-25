@@ -26,14 +26,14 @@ const MAX_VISIBLE_TAGS = 4;
             href={`/case-studies/${study.id}`}
             data-reveal
             style={`--reveal-delay: ${i * 0.15}s;`}
-            class="group block bg-bg-elevated border border-border rounded-sm overflow-hidden transition-colors duration-300 hover:border-border-hover hover:-translate-y-1"
+            class="group block bg-bg-elevated border border-border rounded-sm overflow-hidden transition-all duration-150 ease-out hover:border-accent/40 hover:shadow-lg hover:shadow-accent/5"
           >
             <div class="relative aspect-[16/10] bg-bg-subtle overflow-hidden">
               {study.image ? (
                 <img
                   src={study.image}
                   alt={study.title}
-                  class="w-full h-full object-cover object-bottom"
+                  class="w-full h-full object-cover object-bottom transition-transform duration-200 ease-out group-hover:scale-[1.03]"
                 />
               ) : (
                 <div class="flex items-center justify-center w-full h-full">
@@ -59,7 +59,7 @@ const MAX_VISIBLE_TAGS = 4;
                   </span>
                 ))}
               </div>
-              <h3 class="font-serif text-2xl text-foreground group-hover:text-accent transition-colors duration-300 leading-tight">
+              <h3 class="font-serif text-2xl text-foreground group-hover:text-accent transition-colors duration-150 leading-tight">
                 {study.title}
               </h3>
               <p class="text-text-body text-xl leading-relaxed line-clamp-2">

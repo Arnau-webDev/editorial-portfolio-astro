@@ -16,7 +16,7 @@ export const caseStudies: CaseStudy[] = [
       'Rebuilt the flight upgrade experience as a cross-platform, multi-tenant micro-frontend — serving millions of passengers across 6 airline brands, web, and mobile.',
     role: 'Tech Lead',
     tags: ['Next.js', 'React', 'TypeScript', 'Vite', 'Storybook', 'GA4'],
-    badges: ['Professional', 'Frontend', 'Long Read'],
+    badges: ['Professional', 'Fullstack', 'Long Read'],
     image: '/images/lufthansa-app.jpg',
   },
   {
@@ -26,7 +26,7 @@ export const caseStudies: CaseStudy[] = [
       'A fully serverless AI-powered resume analyzer. Upload your PDF and a job description to receive scored feedback across 5 categories — with zero backend infrastructure.',
     role: 'Solo Dev',
     tags: ['React', 'TypeScript', 'Puter.js', 'pdf.js', 'Zustand', 'Prompt Engineering'],
-    badges: ['Personal', 'AI/ML', 'Long Read'],
+    badges: ['Personal', 'AI/LLM', 'Long Read'],
     image: '/images/Bad_score_overall.png',
   },
   {
