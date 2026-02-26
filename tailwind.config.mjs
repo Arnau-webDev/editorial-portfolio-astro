@@ -8,8 +8,9 @@ export default {
         '3xl': '2000px',
       },
       fontFamily: {
-        serif: ['"Playfair Display"', 'serif'],
+        serif: ['"Noto Serif"', 'serif'],
         sans: ['"Inter"', 'sans-serif'],
+        playfair: ['"Playfair Display"', 'serif'],
       },
       colors: {
         border: 'hsl(var(--border))',
