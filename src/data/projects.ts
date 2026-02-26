@@ -17,7 +17,7 @@ export const caseStudies: CaseStudy[] = [
     role: 'Tech Lead',
     tags: ['Next.js', 'React', 'TypeScript', 'Vite', 'Storybook', 'GA4'],
     badges: ['Professional', 'Fullstack', 'Long Read'],
-    image: '/images/lufthansa-app.jpg',
+    image: '/images/lufthansa-app.webp',
   },
   {
     id: 'ai-resume-analyzer',
@@ -27,7 +27,7 @@ export const caseStudies: CaseStudy[] = [
     role: 'Solo Dev',
     tags: ['React', 'TypeScript', 'Puter.js', 'pdf.js', 'Zustand', 'Prompt Engineering'],
     badges: ['Personal', 'AI/LLM', 'Long Read'],
-    image: '/images/Bad_score_overall.png',
+    image: '/images/Bad_score_overall.webp',
   },
   {
     id: 'this-portfolio',
