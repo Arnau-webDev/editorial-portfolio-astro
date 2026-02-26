@@ -423,19 +423,19 @@ import ArchitectureDiagram from '../../components/diagrams/ArchitectureDiagram.a
           </Reveal>
 
           <!-- Mobile views -->
-          <div class="flex justify-center gap-4 md:gap-6">
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-[1140px] mx-auto">
             <Reveal delay={0}>
-              <div class="w-[360px] rounded-sm overflow-hidden border border-border">
+              <div class="max-w-[360px] mx-auto rounded-sm overflow-hidden border border-border">
                 <img src="/images/mobile-entry-cropped.png" alt="Mobile upgrade flow — entry point with upgrade prompt" class="w-full h-auto block" />
               </div>
             </Reveal>
             <Reveal delay={0.15}>
-              <div class="w-[360px] rounded-sm overflow-hidden border border-border">
+              <div class="max-w-[360px] mx-auto rounded-sm overflow-hidden border border-border">
                 <img src="/images/mobile-selection-sticky-footer.png" alt="Mobile upgrade flow — seat selection screen" class="w-full h-auto block" />
               </div>
             </Reveal>
             <Reveal delay={0.3}>
-              <div class="w-[360px] rounded-sm overflow-hidden border border-border">
+              <div class="max-w-[360px] mx-auto rounded-sm overflow-hidden border border-border">
                 <img src="/images/mobile-summary.png" alt="Mobile upgrade flow — selection summary screen" class="w-full h-auto block" />
               </div>
             </Reveal>

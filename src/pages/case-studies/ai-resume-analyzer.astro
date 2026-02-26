@@ -293,7 +293,7 @@ import PuterArchitectureDiagram from '../../components/diagrams/PuterArchitectur
         <div class="space-y-12 md:space-y-16">
           <!-- Auth + Upload -->
           <Reveal>
-            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
               <div class="border border-border rounded-sm overflow-hidden bg-bg-elevated h-full">
                 <img src="/images/resumer-upload.png" alt="Resumer — Upload form with company, job title, job description, and PDF dropzone" class="w-full h-full object-cover object-top" />
               </div>
@@ -357,7 +357,7 @@ import PuterArchitectureDiagram from '../../components/diagrams/PuterArchitectur
                   resume. Every issue flagged comes with a concrete fix.
                 </p>
               </div>
-              <div class="grid grid-cols-2 gap-4">
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div class="border border-border rounded-md overflow-hidden">
                   <img src="/images/Bad_score_overall.png" alt="Resume Review — overall score 44/100 with Tone & Style 72, Content 68, Structure 30, Skills 75" class="w-full h-auto block" />
                 </div>
@@ -443,7 +443,7 @@ import PuterArchitectureDiagram from '../../components/diagrams/PuterArchitectur
           <div class="max-w-[600px] md:max-w-none">
             <Reveal><SubHeading title="Results" /></Reveal>
             <Reveal delay={0.1}>
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="grid grid-cols-1 xl:grid-cols-2 gap-4">
                 <MetricCard label="Infrastructure cost" value="$0 / month" context="Puter's per-user model means the developer pays nothing at any scale" />
                 <MetricCard label="End-to-end processing" value="~5 seconds" context="PDF render + AI analysis + result display from submit to results" />
                 <MetricCard label="Privacy" value="Zero server exposure" context="Resume content never leaves the user's browser — processed entirely client-side" />
