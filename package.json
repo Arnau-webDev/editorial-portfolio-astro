@@ -9,6 +9,7 @@
     "check": "astro check"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.6.1",
     "astro": "^5.5.3"
   },
   "devDependencies": {
