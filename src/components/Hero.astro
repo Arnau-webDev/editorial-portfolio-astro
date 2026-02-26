@@ -26,7 +26,7 @@
       <!-- Role typing area -->
       <p
         class="text-sm md:text-xl tracking-widest uppercase mb-6 relative"
-        style="color: #7088aa;"
+        style="color: var(--accent-hex);"
       >
         <!-- Invisible placeholder to reserve height -->
         <span class="invisible">Technical Lead Frontend Engineer</span>
@@ -35,7 +35,7 @@
           <span
             id="hero-cursor"
             class="inline-block w-[2px] h-[1em] ml-0.5 align-middle"
-            style="background-color: #7088aa; animation: heroCursorBlink 1.2s step-end infinite; display: none;"
+            style="background-color: var(--accent-hex); animation: heroCursorBlink 1.2s step-end infinite; display: none;"
           ></span>
         </span>
       </p>
@@ -70,27 +70,28 @@
         class="w-full max-w-lg"
         xmlns="http://www.w3.org/2000/svg"
         aria-hidden="true"
+        style="color: var(--accent-hex);"
       >
         <!-- Large outer arcs — very slow clockwise -->
         <g style="animation: heroRotate 100s linear infinite; transform-origin: 250px 250px;">
-          <path d="M 250 50 A 200 200 0 0 1 450 250" fill="none" stroke="#7088aa" stroke-width="0.5" opacity="0.8" />
-          <path d="M 250 450 A 200 200 0 0 1 50 250" fill="none" stroke="#7088aa" stroke-width="0.5" opacity="0.8" />
+          <path d="M 250 50 A 200 200 0 0 1 450 250" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.8" />
+          <path d="M 250 450 A 200 200 0 0 1 50 250" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.8" />
         </g>
 
         <!-- Concentric circles — slow rotation -->
         <g style="animation: heroRotate 80s linear infinite; transform-origin: 250px 250px;">
-          <circle cx="250" cy="250" r="190" fill="none" stroke="#7088aa" stroke-width="0.5" opacity="0.8" />
-          <circle cx="250" cy="250" r="150" fill="none" stroke="#7088aa" stroke-width="0.4" opacity="0.7" />
-          <circle cx="250" cy="250" r="110" fill="none" stroke="#7088aa" stroke-width="0.5" opacity="0.75" />
-          <circle cx="250" cy="250" r="70" fill="none" stroke="#7088aa" stroke-width="0.4" opacity="0.7" />
-          <circle cx="250" cy="250" r="30" fill="none" stroke="#7088aa" stroke-width="0.6" opacity="0.85" />
+          <circle cx="250" cy="250" r="190" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.8" />
+          <circle cx="250" cy="250" r="150" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.7" />
+          <circle cx="250" cy="250" r="110" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.75" />
+          <circle cx="250" cy="250" r="70" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.7" />
+          <circle cx="250" cy="250" r="30" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.85" />
         </g>
 
         <!-- Dashed rings — counter rotation -->
         <g style="animation: heroRotateReverse 130s linear infinite; transform-origin: 250px 250px;">
-          <circle cx="250" cy="250" r="170" fill="none" stroke="#7088aa" stroke-width="0.4" opacity="0.7" stroke-dasharray="3 14" />
-          <circle cx="250" cy="250" r="130" fill="none" stroke="#7088aa" stroke-width="0.4" opacity="0.75" stroke-dasharray="1 10" />
-          <circle cx="250" cy="250" r="90" fill="none" stroke="#7088aa" stroke-width="0.4" opacity="0.7" stroke-dasharray="6 8" />
+          <circle cx="250" cy="250" r="170" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.7" stroke-dasharray="3 14" />
+          <circle cx="250" cy="250" r="130" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.75" stroke-dasharray="1 10" />
+          <circle cx="250" cy="250" r="90" fill="none" stroke="currentColor" stroke-width="0.4" opacity="0.7" stroke-dasharray="6 8" />
         </g>
 
         <!-- Radial lines -->
@@ -102,7 +103,7 @@
                 y1={250 + Math.sin((angle * Math.PI) / 180) * 20}
                 x2={250 + Math.cos((angle * Math.PI) / 180) * 200}
                 y2={250 + Math.sin((angle * Math.PI) / 180) * 200}
-                stroke="#7088aa"
+                stroke="currentColor"
                 stroke-width="0.4"
               />
               <line
@@ -110,7 +111,7 @@
                 y1={250 - Math.sin((angle * Math.PI) / 180) * 20}
                 x2={250 - Math.cos((angle * Math.PI) / 180) * 200}
                 y2={250 - Math.sin((angle * Math.PI) / 180) * 200}
-                stroke="#7088aa"
+                stroke="currentColor"
                 stroke-width="0.4"
               />
             </>
@@ -119,22 +120,22 @@
 
         <!-- Accent crossing lines -->
         <g opacity="0.7">
-          <line x1="80" y1="120" x2="420" y2="380" stroke="#7088aa" stroke-width="0.5" />
-          <line x1="420" y1="120" x2="80" y2="380" stroke="#7088aa" stroke-width="0.5" />
+          <line x1="80" y1="120" x2="420" y2="380" stroke="currentColor" stroke-width="0.5" />
+          <line x1="420" y1="120" x2="80" y2="380" stroke="currentColor" stroke-width="0.5" />
         </g>
 
         <!-- Center diamond — slow counter-rotate -->
         <g style="animation: heroRotate 70s linear infinite reverse; transform-origin: 250px 250px;">
-          <polygon points="250,215 285,250 250,285 215,250" fill="none" stroke="#7088aa" stroke-width="0.8" opacity="0.85" />
-          <polygon points="250,228 272,250 250,272 228,250" fill="none" stroke="#7088aa" stroke-width="0.5" opacity="0.75" />
+          <polygon points="250,215 285,250 250,285 215,250" fill="none" stroke="currentColor" stroke-width="0.8" opacity="0.85" />
+          <polygon points="250,228 272,250 250,272 228,250" fill="none" stroke="currentColor" stroke-width="0.5" opacity="0.75" />
         </g>
 
         <!-- Small triangles -->
         <g opacity="0.7" style="animation: heroRotate 110s linear infinite; transform-origin: 250px 250px;">
-          <polygon points="130,90 140,75 150,90" fill="none" stroke="#7088aa" stroke-width="0.6" />
-          <polygon points="360,150 370,135 380,150" fill="none" stroke="#7088aa" stroke-width="0.5" />
-          <polygon points="100,350 110,335 120,350" fill="none" stroke="#7088aa" stroke-width="0.6" />
-          <polygon points="380,370 390,355 400,370" fill="none" stroke="#7088aa" stroke-width="0.5" />
+          <polygon points="130,90 140,75 150,90" fill="none" stroke="currentColor" stroke-width="0.6" />
+          <polygon points="360,150 370,135 380,150" fill="none" stroke="currentColor" stroke-width="0.5" />
+          <polygon points="100,350 110,335 120,350" fill="none" stroke="currentColor" stroke-width="0.6" />
+          <polygon points="380,370 390,355 400,370" fill="none" stroke="currentColor" stroke-width="0.5" />
         </g>
 
         <!-- Floating dots -->
@@ -156,7 +157,7 @@
             cx={dot.cx}
             cy={dot.cy}
             r={dot.r}
-            fill="#7088aa"
+            fill="currentColor"
             opacity={dot.op}
             style={`animation: heroDotFloat 10s ease-in-out infinite; animation-delay: ${dot.delay};`}
           />
@@ -169,7 +170,7 @@
           { cx: 250, cy: 440 },
           { cx: 60, cy: 250 },
         ].map((p) => (
-          <circle cx={p.cx} cy={p.cy} r="4" fill="none" stroke="#7088aa" stroke-width="0.6" opacity="0.8" />
+          <circle cx={p.cx} cy={p.cy} r="4" fill="none" stroke="currentColor" stroke-width="0.6" opacity="0.8" />
         ))}
       </svg>
     </div>
