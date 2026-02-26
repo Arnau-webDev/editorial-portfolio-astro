@@ -3,13 +3,6 @@ export default {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
   prefix: '',
   theme: {
-    container: {
-      center: true,
-      padding: '2rem',
-      screens: {
-        '2xl': '1400px',
-      },
-    },
     extend: {
       screens: {
         '3xl': '2000px',
@@ -20,7 +13,6 @@ export default {
       },
       colors: {
         border: 'hsl(var(--border))',
-        input: 'hsl(var(--input))',
         ring: 'hsl(var(--ring))',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
@@ -44,14 +36,6 @@ export default {
           DEFAULT: 'hsl(var(--accent))',
           foreground: 'hsl(var(--accent-foreground))',
           hover: 'hsl(var(--accent-hover))',
-        },
-        popover: {
-          DEFAULT: 'hsl(var(--popover))',
-          foreground: 'hsl(var(--popover-foreground))',
-        },
-        card: {
-          DEFAULT: 'hsl(var(--card))',
-          foreground: 'hsl(var(--card-foreground))',
         },
         'bg-elevated': 'hsl(var(--bg-elevated))',
         'bg-subtle': 'hsl(var(--bg-subtle))',

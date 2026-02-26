@@ -41,12 +41,6 @@
     --background: 240 6% 3.9%;
     --foreground: 0 0% 98%;
 
-    --card: 240 4% 9.4%;
-    --card-foreground: 0 0% 98%;
-
-    --popover: 240 4% 9.4%;
-    --popover-foreground: 0 0% 98%;
-
     --primary: 214 25% 55%;
     --primary-foreground: 0 0% 98%;
 
@@ -63,7 +57,6 @@
     --destructive-foreground: 0 0% 98%;
 
     --border: 240 4% 15.7%;
-    --input: 240 4% 15.7%;
     --ring: 214 25% 55%;
 
     --radius: 0.25rem;
@@ -120,12 +113,6 @@
   html {
     scrollbar-width: thin;
     scrollbar-color: #27272a #09090b;
-  }
-}
-
-@layer utilities {
-  .font-serif-display {
-    font-family: 'Playfair Display', serif;
   }
 }
 
