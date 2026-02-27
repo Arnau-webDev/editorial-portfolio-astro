@@ -14,6 +14,7 @@ Personal portfolio built with Astro 5 (SSG), Tailwind CSS, and vanilla TypeScrip
 ## Performance
 
 Lighthouse 100 across all categories. FCP 0.2s, ~4 KB total client JS (scroll reveals, header, typing effect).
+
 <img width="857" height="189" alt="image" src="https://github.com/user-attachments/assets/2af0b880-c10a-4c7e-8884-697cc7094536" />
 
 

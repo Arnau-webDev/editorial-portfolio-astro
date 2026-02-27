@@ -12,7 +12,7 @@ import DecisionCard from '../../components/case-study/DecisionCard.astro';
 
 import lighthouseMetricsReact from '../../assets/images/Lighthouse_metrics_react.png';
 import lighthouseScoreReactMini from '../../assets/images/Lighthouse_score_react.mini.png';
-import lighthouseMetricsAstroProd from '../../assets/images/Lighthouse_metrics_astro_prod.png';
+import lighthouseMetricsAstroProd from '../../assets/images/Lighthouse_metrics_astro_prod2.png';
 import lighthouseScoreAstroMini from '../../assets/images/Lighthouse_score_astro.mini.png';
 ---
 
@@ -57,10 +57,10 @@ import lighthouseScoreAstroMini from '../../assets/images/Lighthouse_score_astro
 
         <Reveal instant delay={0.3}>
           <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+            <StatCard value="0.2s" label="FCP (Time to First Paint)" />
             <StatCard value="100" label="Lighthouse Performance" />
             <StatCard value="0 KB" label="React Runtime" />
             <StatCard value="7" label="npm Packages" />
-            <StatCard value="0.3s" label="FCP (Time to First Paint)" />
           </div>
         </Reveal>
       </div>
@@ -123,7 +123,7 @@ import lighthouseScoreAstroMini from '../../assets/images/Lighthouse_score_astro
                   { title: 'Pre-rendered HTML', desc: 'Content is visible immediately — no JS bundle to download, parse, or execute before first paint' },
                   { title: 'Zero runtime by default', desc: 'Astro ships static HTML + CSS. Client-side JS is opt-in at the component level, not the default' },
                   { title: 'Perfect SEO out of the box', desc: 'Search engines get complete HTML — no hydration delay, no empty shells, no rendering budget wasted' },
-                  { title: 'Lighthouse Performance: 100', desc: 'FCP of 0.3s, LCP of 0.5s — a 22-point gain from choosing the right abstraction level' },
+                  { title: 'Lighthouse Performance: 100', desc: 'FCP of 0.2s, LCP of 0.6s — a 22-point gain from choosing the right abstraction level' },
                 ].map((point) => (
                   <li class="flex gap-3">
                     <span class="text-accent mt-1.5 shrink-0">&mdash;</span>
@@ -207,7 +207,7 @@ import lighthouseScoreAstroMini from '../../assets/images/Lighthouse_score_astro
               <div class="space-y-3">
                 {[
                   { step: '1', label: 'Browser requests /', sub: 'Server responds with complete pre-rendered HTML' },
-                  { step: '2', label: 'Browser renders HTML', sub: 'Content visible immediately — FCP: 0.3s' },
+                  { step: '2', label: 'Browser renders HTML', sub: 'Content visible immediately — FCP: 0.2s' },
                   { step: '3', label: 'CSS loads', sub: 'Tailwind utility classes, no layout shift' },
                   { step: '4', label: 'Small JS modules load', sub: '~4 KB · reveal.ts + header.ts + hero-typing.ts' },
                   { step: '5', label: 'Animations activate', sub: 'IntersectionObserver triggers reveals — TBT: 0ms' },
@@ -240,13 +240,13 @@ import lighthouseScoreAstroMini from '../../assets/images/Lighthouse_score_astro
             />
             <MetricCard
               label="FCP"
-              value="2.1s → 0.3s"
-              context="86% faster. The browser gets complete HTML — no JS needed to show content."
+              value="2.1s → 0.2s"
+              context="90% faster. The browser gets complete HTML — no JS needed to show content."
             />
             <MetricCard
               label="LCP"
-              value="2.1s → 0.5s"
-              context="76% faster. The hero text is in the HTML, not injected by React after bundle execution."
+              value="2.1s → 0.6s"
+              context="71% faster. The hero text is in the HTML, not injected by React after bundle execution."
             />
             <MetricCard
               label="SEO"
@@ -287,7 +287,7 @@ import lighthouseScoreAstroMini from '../../assets/images/Lighthouse_score_astro
                 <Reveal delay={0.45}>
                   <Image
                     src={lighthouseMetricsAstroProd}
-                    alt="Lighthouse metrics for the Astro SSG version showing FCP 0.3s and LCP 0.5s"
+                    alt="Lighthouse metrics for the Astro SSG version showing FCP 0.2s and LCP 0.6s"
                     class="w-full rounded-sm border border-accent/20"
                   />
                 </Reveal>
