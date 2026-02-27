@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
@@ -8,6 +9,11 @@ import MetricCard from '../../components/case-study/MetricCard.astro';
 import SectionHeading from '../../components/case-study/SectionHeading.astro';
 import SubHeading from '../../components/case-study/SubHeading.astro';
 import DecisionCard from '../../components/case-study/DecisionCard.astro';
+
+import lighthouseMetricsReact from '../../assets/images/Lighthouse_metrics_react.png';
+import lighthouseScoreReactMini from '../../assets/images/Lighthouse_score_react.mini.png';
+import lighthouseMetricsAstroProd from '../../assets/images/Lighthouse_metrics_astro_prod.png';
+import lighthouseScoreAstroMini from '../../assets/images/Lighthouse_score_astro.mini.png';
 ---
 
 <BaseLayout
@@ -54,7 +60,7 @@ import DecisionCard from '../../components/case-study/DecisionCard.astro';
             <StatCard value="100" label="Lighthouse Performance" />
             <StatCard value="0 KB" label="React Runtime" />
             <StatCard value="7" label="npm Packages" />
-            <StatCard value="0.4s" label="FCP (Time to First Paint)" />
+            <StatCard value="0.3s" label="FCP (Time to First Paint)" />
           </div>
         </Reveal>
       </div>
@@ -117,7 +123,7 @@ import DecisionCard from '../../components/case-study/DecisionCard.astro';
                   { title: 'Pre-rendered HTML', desc: 'Content is visible immediately — no JS bundle to download, parse, or execute before first paint' },
                   { title: 'Zero runtime by default', desc: 'Astro ships static HTML + CSS. Client-side JS is opt-in at the component level, not the default' },
                   { title: 'Perfect SEO out of the box', desc: 'Search engines get complete HTML — no hydration delay, no empty shells, no rendering budget wasted' },
-                  { title: 'Lighthouse Performance: 100', desc: 'FCP of 0.4s, LCP of 0.4s — a 22-point gain from choosing the right abstraction level' },
+                  { title: 'Lighthouse Performance: 100', desc: 'FCP of 0.3s, LCP of 0.5s — a 22-point gain from choosing the right abstraction level' },
                 ].map((point) => (
                   <li class="flex gap-3">
                     <span class="text-accent mt-1.5 shrink-0">&mdash;</span>
@@ -201,7 +207,7 @@ import DecisionCard from '../../components/case-study/DecisionCard.astro';
               <div class="space-y-3">
                 {[
                   { step: '1', label: 'Browser requests /', sub: 'Server responds with complete pre-rendered HTML' },
-                  { step: '2', label: 'Browser renders HTML', sub: 'Content visible immediately — FCP: 0.4s' },
+                  { step: '2', label: 'Browser renders HTML', sub: 'Content visible immediately — FCP: 0.3s' },
                   { step: '3', label: 'CSS loads', sub: 'Tailwind utility classes, no layout shift' },
                   { step: '4', label: 'Small JS modules load', sub: '~4 KB · reveal.ts + header.ts + hero-typing.ts' },
                   { step: '5', label: 'Animations activate', sub: 'IntersectionObserver triggers reveals — TBT: 0ms' },
@@ -234,13 +240,13 @@ import DecisionCard from '../../components/case-study/DecisionCard.astro';
             />
             <MetricCard
               label="FCP"
-              value="2.1s → 0.4s"
-              context="81% faster. The browser gets complete HTML — no JS needed to show content."
+              value="2.1s → 0.3s"
+              context="86% faster. The browser gets complete HTML — no JS needed to show content."
             />
             <MetricCard
               label="LCP"
-              value="2.1s → 0.4s"
-              context="81% faster. The hero text is in the HTML, not injected by React after bundle execution."
+              value="2.1s → 0.5s"
+              context="76% faster. The hero text is in the HTML, not injected by React after bundle execution."
             />
             <MetricCard
               label="SEO"
@@ -256,15 +262,15 @@ import DecisionCard from '../../components/case-study/DecisionCard.astro';
               </Reveal>
               <div class="relative">
                 <Reveal delay={0.3}>
-                  <img
-                    src="/images/Lighthouse_metrics_react.png"
+                  <Image
+                    src={lighthouseMetricsReact}
                     alt="Lighthouse metrics for the React/Vite version showing FCP 2.1s and LCP 2.1s"
                     class="w-full rounded-sm border border-border"
                   />
                 </Reveal>
                 <Reveal delay={0.5}>
-                  <img
-                    src="/images/Lighthouse_score_react.mini.png"
+                  <Image
+                    src={lighthouseScoreReactMini}
                     alt="Lighthouse performance score of 78 for the React/Vite version"
                     class="absolute -bottom-6 -right-4 w-[35%] max-w-[160px] rounded-xl border border-border shadow-lg"
                   />
@@ -279,15 +285,15 @@ import DecisionCard from '../../components/case-study/DecisionCard.astro';
               </Reveal>
               <div class="relative">
                 <Reveal delay={0.45}>
-                  <img
-                    src="/images/Lighthouse_metrics_astro.png"
-                    alt="Lighthouse metrics for the Astro SSG version showing FCP 0.4s and LCP 0.4s"
+                  <Image
+                    src={lighthouseMetricsAstroProd}
+                    alt="Lighthouse metrics for the Astro SSG version showing FCP 0.3s and LCP 0.5s"
                     class="w-full rounded-sm border border-accent/20"
                   />
                 </Reveal>
                 <Reveal delay={0.65}>
-                  <img
-                    src="/images/Lighthouse_score_astro.mini.png"
+                  <Image
+                    src={lighthouseScoreAstroMini}
                     alt="Lighthouse performance score of 100 for the Astro SSG version"
                     class="absolute -bottom-6 -right-4 w-[35%] max-w-[160px] rounded-xl border border-accent/20 shadow-lg"
                   />

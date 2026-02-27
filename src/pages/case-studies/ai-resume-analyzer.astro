@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Header from '../../components/Header.astro';
 import Footer from '../../components/Footer.astro';
@@ -9,6 +10,11 @@ import SectionHeading from '../../components/case-study/SectionHeading.astro';
 import SubHeading from '../../components/case-study/SubHeading.astro';
 import DecisionCard from '../../components/case-study/DecisionCard.astro';
 import PuterArchitectureDiagram from '../../components/diagrams/PuterArchitectureDiagram.astro';
+
+import resumerUpload from '../../assets/images/resumer-upload.png';
+import resumerResultsOverview from '../../assets/images/resumer-results-overview2.png';
+import resumerCostPerUser from '../../assets/images/resumer-individual-cost-per-user.png';
+import badScoreAts from '../../assets/images/Bad_score_ATS.png';
 ---
 
 <BaseLayout
@@ -161,8 +167,8 @@ import PuterArchitectureDiagram from '../../components/diagrams/PuterArchitectur
           </Reveal>
           <Reveal delay={0.15}>
             <div class="border border-border rounded-md overflow-hidden">
-              <img
-                src="/images/resumer-individual-cost-per-user.png"
+              <Image
+                src={resumerCostPerUser}
                 alt="Puter usage dashboard — Free plan, 2.13 MB used, $0.50 AI quota consumed"
                 class="w-full h-auto block"
               />
@@ -295,10 +301,10 @@ import PuterArchitectureDiagram from '../../components/diagrams/PuterArchitectur
           <Reveal>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
               <div class="border border-border rounded-sm overflow-hidden bg-bg-elevated h-full">
-                <img src="/images/resumer-upload.png" alt="Resumer — Upload form with company, job title, job description, and PDF dropzone" class="w-full h-full object-cover object-top" />
+                <Image src={resumerUpload} alt="Resumer — Upload form with company, job title, job description, and PDF dropzone" class="w-full h-full object-cover object-top" />
               </div>
               <div class="border border-border rounded-sm overflow-hidden bg-bg-elevated h-full">
-                <img src="/images/resumer-results-overview2.png" alt="Resumer — Results overview with sticky PDF viewer and score panel" class="w-full h-full object-cover object-right" />
+                <Image src={resumerResultsOverview} alt="Resumer — Results overview with sticky PDF viewer and score panel" class="w-full h-full object-cover object-right" />
               </div>
             </div>
             <p class="text-text-muted text-base italic mt-4">
@@ -362,7 +368,7 @@ import PuterArchitectureDiagram from '../../components/diagrams/PuterArchitectur
                   <img src="/images/Bad_score_overall.webp" alt="Resume Review — overall score 44/100 with Tone & Style 72, Content 68, Structure 30, Skills 75" class="w-full h-auto block" />
                 </div>
                 <div class="border border-border rounded-md overflow-hidden h-full">
-                  <img src="/images/Bad_score_ATS.png" alt="ATS Score 38/100 — Needs Improvement with four actionable issues listed" class="w-full h-full object-cover object-top" />
+                  <Image src={badScoreAts} alt="ATS Score 38/100 — Needs Improvement with four actionable issues listed" class="w-full h-full object-cover object-top" />
                 </div>
               </div>
             </div>
