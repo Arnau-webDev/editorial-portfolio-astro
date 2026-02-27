@@ -9,13 +9,11 @@ function initHeroTyping() {
 
   // Typing effect
   const typedEl = document.getElementById('hero-typed');
-  const cursorEl = document.getElementById('hero-cursor');
-  if (!typedEl || !cursorEl) return;
-
-  cursorEl.style.display = 'inline-block';
+  if (!typedEl) return;
 
   let i = 0;
   const delay = setTimeout(() => {
+    typedEl.classList.add('typing');
     const interval = setInterval(() => {
       i++;
       typedEl.textContent = ROLE.slice(0, i);
