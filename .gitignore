@@ -21,3 +21,6 @@ npm-debug.log*
 
 # editor
 .vscode/extensions.json
+
+# Claude Code
+.claude/
