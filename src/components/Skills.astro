@@ -38,7 +38,7 @@ const CARD_ANIM_DURATION = 0.1; // seconds between each card's animation
                 class="flex flex-col items-center gap-1.5"
               >
                 <div class={`w-10 h-10 xl:w-12 xl:h-12 3xl:w-16 3xl:h-16 rounded-md border border-border flex items-center justify-center ${item.variant === 'dark' ? 'bg-zinc-900' : 'bg-bg-elevated'}`}>
-                  <div class="w-8 h-8 xl:w-8 xl:h-8 3xl:w-12 3xl:h-12 flex items-center justify-center">
+                  <div class="w-8 h-8 xl:w-8 xl:h-8 3xl:w-12 3xl:h-12 flex items-center justify-center [&_svg]:w-full [&_svg]:h-full">
                     <Fragment set:html={item.svg} />
                   </div>
                 </div>
