@@ -1,4 +1,4 @@
-const ROLE = 'Technical Lead Frontend Engineer';
+const ROLE = 'Technical Lead & Senior Frontend Engineer';
 
 function initHeroTyping() {
   // Name spans — slide in
@@ -11,12 +11,42 @@ function initHeroTyping() {
   const typedEl = document.getElementById('hero-typed');
   if (!typedEl) return;
 
+  // Pre-compute where line breaks occur at the current viewport width
+  // so we can insert <br> during typing BEFORE the browser wraps text
+  const breakIndices: number[] = [];
+  typedEl.style.visibility = 'hidden';
+  const words = ROLE.split(' ');
+  let built = '';
+  let lastH = 0;
+
+  for (const word of words) {
+    const prev = built;
+    built = built ? built + ' ' + word : word;
+    typedEl.textContent = built;
+    const h = typedEl.offsetHeight;
+    if (lastH > 0 && h > lastH) {
+      breakIndices.push(prev.length); // space index where this word starts
+    }
+    lastH = h;
+  }
+
+  typedEl.textContent = '';
+  typedEl.style.visibility = '';
+
   let i = 0;
   const delay = setTimeout(() => {
     typedEl.classList.add('typing');
     const interval = setInterval(() => {
       i++;
-      typedEl.textContent = ROLE.slice(0, i);
+      let display = ROLE.slice(0, i);
+      // Insert pre-computed breaks (from end to preserve indices)
+      for (let b = breakIndices.length - 1; b >= 0; b--) {
+        const idx = breakIndices[b];
+        if (idx < display.length) {
+          display = display.slice(0, idx) + '<br>' + display.slice(idx + 1);
+        }
+      }
+      typedEl.innerHTML = display;
       if (i >= ROLE.length) {
         clearInterval(interval);
       }

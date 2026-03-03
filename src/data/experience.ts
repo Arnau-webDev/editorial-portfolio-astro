@@ -20,7 +20,7 @@ export const experiences: ExperienceItem[] = [
     logo: '/images/logos/lufthansa.svg',
   },
   {
-    title: 'Frontend Developer',
+    title: 'Frontend Engineer',
     company: 'Openbank',
     companyUrl: 'https://www.openbank.com',
     period: '2023 — 2024',
@@ -30,7 +30,7 @@ export const experiences: ExperienceItem[] = [
     logo: '/images/logos/openbank.svg',
   },
   {
-    title: 'Frontend Developer',
+    title: 'Frontend Engineer',
     company: 'Atrápalo',
     companyUrl: 'https://www.atrapalo.com',
     period: '2022 — 2023',
@@ -40,7 +40,7 @@ export const experiences: ExperienceItem[] = [
     logo: '/images/logos/atrapalo.png',
   },
   {
-    title: 'Full Stack Developer',
+    title: 'Full Stack Engineer',
     company: 'NTT DATA',
     companyUrl: 'https://www.nttdata.com',
     period: '2019 — 2021',
