@@ -215,9 +215,11 @@
   content: '';
   display: inline-block;
   width: 2px;
-  height: 1em;
-  margin-left: 0.125rem;
+  height: 1.4em;
+  margin-left: 1px;
   vertical-align: middle;
+  position: relative;
+  top: -0.1em;
   background-color: var(--accent-hex);
   animation: heroCursorBlink 1.2s step-end infinite;
 }
