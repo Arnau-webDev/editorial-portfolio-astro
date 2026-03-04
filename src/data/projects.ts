@@ -6,6 +6,7 @@ export interface CaseStudy {
   tags: string[];
   badges: string[];
   image?: string;
+  imageAlt?: string;
 }
 
 export const caseStudies: CaseStudy[] = [
@@ -18,6 +19,7 @@ export const caseStudies: CaseStudy[] = [
     tags: ['Next.js', 'React', 'TypeScript', 'Vite', 'Storybook', 'GA4'],
     badges: ['Professional', 'Fullstack', 'Long Read'],
     image: '/images/lufthansa-app.webp',
+    imageAlt: 'Lufthansa mobile app showing the flight upgrade booking interface',
   },
   {
     id: 'ai-resume-analyzer',
@@ -28,6 +30,7 @@ export const caseStudies: CaseStudy[] = [
     tags: ['React', 'TypeScript', 'Puter.js', 'pdf.js', 'Zustand', 'Prompt Engineering'],
     badges: ['Personal', 'AI/LLM', 'Long Read'],
     image: '/images/Bad_score_overall.webp',
+    imageAlt: 'Resumer AI analyzer showing a scored resume feedback dashboard',
   },
   {
     id: 'this-portfolio',
@@ -38,5 +41,6 @@ export const caseStudies: CaseStudy[] = [
     tags: ['Astro.js', 'TypeScript', 'Tailwind CSS', 'Vanilla JS', 'SSG'],
     badges: ['Personal', 'Frontend', 'Quick Read'],
     image: '/images/Hero_page_portfolio.png',
+    imageAlt: 'Portfolio homepage hero section with geometric SVG illustration',
   },
 ];

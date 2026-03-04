@@ -32,7 +32,9 @@ const MAX_VISIBLE_TAGS = 4;
               {study.image ? (
                 <img
                   src={study.image}
-                  alt={study.title}
+                  alt={study.imageAlt ?? study.title}
+                  width="640"
+                  height="400"
                   class="w-full h-full object-cover object-bottom transition-transform duration-200 ease-out group-hover:scale-[1.03]"
                 />
               ) : (
