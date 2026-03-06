@@ -3,7 +3,7 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://arnau-mq.dev',
+  site: 'https://www.arnau-mq.dev',
   integrations: [
     tailwind({ applyBaseStyles: false }),
     sitemap(),
